@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="69e42c8f-d83d-4b63-8f30-82a00f8bb4ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/django5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/django5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/myproject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/myproject/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +51,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -43,7 +66,29 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.栄養表示 ver3.0">
+    <configuration name="栄養表示 ver3.0" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="django5" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../Python/レシピづくり" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../Python/レシピづくり/栄養表示 ver3.0.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="django5" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -68,6 +113,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.栄養表示 ver3.0" />
         <item itemvalue="Python.views" />
       </list>
     </recent_temporary>
@@ -89,40 +135,76 @@
       <workItem from="1589515542748" duration="22000" />
       <workItem from="1589515630451" duration="1027000" />
       <workItem from="1589524700239" duration="1932000" />
-      <workItem from="1589526637412" duration="5436000" />
+      <workItem from="1589526637412" duration="5559000" />
+      <workItem from="1589539599386" duration="4000" />
+      <workItem from="1589540233246" duration="599000" />
+      <workItem from="1589615105489" duration="3604000" />
     </task>
+    <task id="LOCAL-00001" summary="コミットしました">
+      <created>1589539497550</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589539497550</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="コミットしました" />
+    <option name="LAST_COMMIT_MESSAGE" value="コミットしました" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="419" y="94" key="FileChooserDialogImpl" timestamp="1589526633271">
+    <state x="264" y="0" key="CommitChangelistDialog2" timestamp="1589539495547">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="419" y="94" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589526633271" />
-    <state width="1220" height="160" key="GridCell.Tab.0.bottom" timestamp="1589525075200">
+    <state x="264" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1589539495547" />
+    <state x="419" y="94" key="FileChooserDialogImpl" timestamp="1589615159731">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1220" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589525075200" />
-    <state width="1220" height="160" key="GridCell.Tab.0.center" timestamp="1589525075200">
+    <state x="419" y="94" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589615159731" />
+    <state width="1220" height="508" key="GridCell.Tab.0.bottom" timestamp="1589540834083">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1220" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1589525075200" />
-    <state width="1220" height="160" key="GridCell.Tab.0.left" timestamp="1589525075200">
+    <state width="1220" height="508" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589540834083" />
+    <state width="1220" height="508" key="GridCell.Tab.0.center" timestamp="1589540834083">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1220" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1589525075200" />
-    <state width="1220" height="160" key="GridCell.Tab.0.right" timestamp="1589525075200">
+    <state width="1220" height="508" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1589540834083" />
+    <state width="1220" height="508" key="GridCell.Tab.0.left" timestamp="1589540834083">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1220" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589525075200" />
-    <state x="141" y="0" key="SettingsEditor" timestamp="1589515747849">
+    <state width="1220" height="508" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1589540834083" />
+    <state width="1220" height="508" key="GridCell.Tab.0.right" timestamp="1589540834083">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="141" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589515747849" />
+    <state width="1220" height="508" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589540834083" />
+    <state x="255" y="0" key="SettingsEditor" timestamp="1589540611695">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="255" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589540611695" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1589540784473">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1589540784473" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/django5$_ver3_0.coverage" NAME="栄養表示 ver3.0 Coverage Results" MODIFIED="1589540624896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Python/レシピづくり" />
     <SUITE FILE_PATH="coverage/django5$views.coverage" NAME="views Coverage Results" MODIFIED="1589525068958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/login/signupapp" />
   </component>
 </project>
