@@ -23,6 +23,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/django5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/django5.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/accounts/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/db.sqlite3" afterDir="false" />
@@ -45,7 +47,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1bvKw1SlnR8QmwUvzq5brNq3VYF" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -74,7 +78,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\半田拓朗\Desktop\django\django5\myvenv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../Python/レシピづくり" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -111,6 +115,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.views" />
+      <item itemvalue="Python.栄養表示 ver3.0" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.栄養表示 ver3.0" />
@@ -138,7 +146,9 @@
       <workItem from="1589526637412" duration="5559000" />
       <workItem from="1589539599386" duration="4000" />
       <workItem from="1589540233246" duration="599000" />
-      <workItem from="1589615105489" duration="3604000" />
+      <workItem from="1589615105489" duration="6032000" />
+      <workItem from="1589640545861" duration="748000" />
+      <workItem from="1589700482892" duration="17584000" />
     </task>
     <task id="LOCAL-00001" summary="コミットしました">
       <created>1589539497550</created>
@@ -170,6 +180,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="コミットしました" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="94" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589700972832">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="94" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1589700972832" />
     <state x="264" y="0" key="CommitChangelistDialog2" timestamp="1589539495547">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -194,10 +208,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1220" height="508" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589540834083" />
-    <state x="255" y="0" key="SettingsEditor" timestamp="1589540611695">
+    <state x="255" y="0" key="SettingsEditor" timestamp="1589701736314">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="255" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589540611695" />
+    <state x="255" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589701736314" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1589540784473">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
