@@ -121,8 +121,8 @@ def outputview(request):
     out(food_input, weight_input)
     template = loader.get_template("output.html")
     v = foodname[0].replace('\u3000', ' ')
-    vv = " " + v + " x " + weight_input + "g "
-    context = {"vv": vv,
+    context = {"name": v,
+               "weight": weight_input,
                "h0": hyo[0],
                "h1": hyo[1],
                "h2": hyo[2],
