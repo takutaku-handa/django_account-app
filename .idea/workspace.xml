@@ -19,16 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e42c8f-d83d-4b63-8f30-82a00f8bb4ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/django5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/django5.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="69e42c8f-d83d-4b63-8f30-82a00f8bb4ca" name="Default Changelist" comment="コミットしました">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/accounts/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/output.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/output.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/myproject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/myproject/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +56,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../HTML" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -148,7 +143,10 @@
       <workItem from="1589540233246" duration="599000" />
       <workItem from="1589615105489" duration="6032000" />
       <workItem from="1589640545861" duration="748000" />
-      <workItem from="1589700482892" duration="17584000" />
+      <workItem from="1589700482892" duration="17856000" />
+      <workItem from="1589727626175" duration="5100000" />
+      <workItem from="1589795473673" duration="730000" />
+      <workItem from="1589881558162" duration="26000" />
     </task>
     <task id="LOCAL-00001" summary="コミットしました">
       <created>1589539497550</created>
@@ -184,14 +182,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="94" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1589700972832" />
-    <state x="264" y="0" key="CommitChangelistDialog2" timestamp="1589539495547">
+    <state x="264" y="0" key="CommitChangelistDialog2" timestamp="1589726647230">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="264" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1589539495547" />
-    <state x="419" y="94" key="FileChooserDialogImpl" timestamp="1589615159731">
+    <state x="264" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1589726647230" />
+    <state x="419" y="94" key="FileChooserDialogImpl" timestamp="1589881582199">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="419" y="94" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589615159731" />
+    <state x="419" y="94" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589881582199" />
     <state width="1220" height="508" key="GridCell.Tab.0.bottom" timestamp="1589540834083">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

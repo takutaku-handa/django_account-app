@@ -28,7 +28,7 @@ class UserCreateView(CreateView):
 
 
 # excelシートの読み込み
-book = openpyxl.load_workbook("accounts\FOOD.xlsx")
+book = openpyxl.load_workbook("accounts/FOOD.xlsx")
 sheet = book["本表"]
 
 # 食べ物の名前のリストを作り、番号を返す
@@ -43,13 +43,10 @@ cell = (
     "P",
     "Q", "S", "T", "U", "V", "AE")
 nut = [2650, 60, 20, 3149, 2500, 650, 340, 1000, 7, 1.4, 1.6, 1.4, 2.4, 15, 100, 5.5, 240, 5, 850, 6.5, 8.0]
-eiy = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ]
-hyo = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-       0, 0, 0, 0, 0, 0, 0, 0, 0]
-par = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-       0, 0, 0, 0, 0, 0, 0, 0, 0]
-list_contents = []
+eiy = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ]
+hyo = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ]
+par = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ]
+foodname = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 
 # 関数集
@@ -63,41 +60,49 @@ def add(x, y, inn):
     elif type(y) == type("ji"):
         pass
     else:  # セルの値がintまたはfloatのときだけ計算する（でないとエラーになる）
-        eiy[x] += round(float(y) * inn * 0.01, 1)
+        eiy[x] = round(float(y) * inn * 0.01, 1)
 
 
 def hyouji(x):
     e = nut[x]
-    p = float(eiy[x]) / e * 100
+    p = 100 * float(eiy[x]) / e
     p = round(p, 1)
-    hy = str(round(eiy[x], 1))
-    parcent = str(p)
-    hyo[x] = hy
-    par[x] = parcent
+    par[x] = str(p)
+    hyo[x] = str(round(eiy[x], 1))
+    eiy[x] = 0
 
 
 # スタート
 def out(f, w):
-    m = lists_food.index(f)
+    foodname[0] = f
+
+    try:
+        num = lists_food.index(f)
+        num = int(num)
+    except ValueError:
+        num = -8
+        w = 0
+        foodname[0] = "＜＜未登録の食品名です＞＞"
+
     inn = int(w)
 
     # エネルギーからパントテン酸
     for n in range(0, 18):
-        add(n, youso(n, m), inn)
+        add(n, youso(n, num), inn)
         hyouji(n)
 
         # ビタミンＡ
     for j in range(18, 24):
-        add(18, youso(j, m), inn)
+        add(18, youso(j, num), inn)
     hyouji(18)
 
     # ビタミンE
     for j in range(24, 28):
-        add(19, youso(j, m), inn)
+        add(19, youso(j, num), inn)
     hyouji(19)
 
     # 食塩相当量
-    add(20, youso(28, m), inn)
+    add(20, youso(28, num), inn)
     hyouji(20)
 
 
@@ -106,17 +111,18 @@ def indexview(request):
     return render(request, 'index.html')
 
 
+def listview(request):
+    return render(request, 'list.html')
+
+
 def outputview(request):
     food_input = request.POST["food"]
     weight_input = request.POST["weight"]
     out(food_input, weight_input)
     template = loader.get_template("output.html")
-    v = food_input.replace('\u3000', ' ')
+    v = foodname[0].replace('\u3000', ' ')
     vv = " " + v + " x " + weight_input + "g "
-    list_contents.append(vv)
-    context = {"food": food_input,
-               "weight": weight_input,
-               "list_contents": list_contents,
+    context = {"vv": vv,
                "h0": hyo[0],
                "h1": hyo[1],
                "h2": hyo[2],
