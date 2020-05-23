@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ログアウト確認</title>
+</head>
+<body>
+<style>
+    .link_button {
+        display: block;
+        font-weight: bold; /*太字に*/
+        background: mediumvioletred; /*背景を水色に*/
+        color: white; /*文字を白に*/
+        padding: 5px 10px; /*内側の余白*/
+        border-radius: 20px; /*角を丸くする*/
+        font-family: 'Avenir', 'Arial'; /*フォントをいい感じに*/
+        margin: 5em 2em 1em 5em;
+    }
+</style>
+<h2 style="text-align: center">本当にログアウトしますか？</h2>
+
+<a class="link_button" id='logout' href="{% url 'logout' %}">はい</a>
+<a class="link_button" id='index' href="{% url 'index' %}">いいえ</a>
+</body>
+</html>

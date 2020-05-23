@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>リスト</title>
+</head>
+<body>
+<style>
+    p {
+        font-size: 1.5em;
+        margin: 0.2em;
+    }
+
+    h1 {
+        font-size: 3em;
+        text-align: center;
+    }
+
+    h2 {
+        color: orange;
+        text-align: center;
+        font-size: 2em;
+    }
+
+    a {
+        display: block;
+        font-size: 350%;
+        margin-right: auto;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        width: 5em;
+        height: 1.5em;
+    }
+
+    input#it {
+        width: 1.7em;
+        height: 1.5em;
+    }
+
+    #sub {
+        position: fixed;
+        right: 100px;
+        top: 70px;
+        font-size: 1.7em;
+    }
+
+    div {
+        margin-left: 2em;
+    }
+
+</style>
+
+
+<h1>食品名リスト</h1>
+<h2>種類別に並んでいます</h2>
+<a href="{% url 'index' %}">戻る</a>
+
+<form action="{% url 'list_index' %}" method="post">
+    <div>
+        {% csrf_token %}
+        {% for i in list %}
+            <p><input id="it" type="checkbox" name="checkbox" value={{ i }}>{{ i }}</p>
+        {% endfor %}
+    </div>
+
+    <p><input id="sub" type="submit" value="追加する"></p>
+</form>
+</body>
+</html>

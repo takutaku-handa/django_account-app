@@ -5,44 +5,228 @@
     <title>食品成分</title>
 </head>
 <body>
-{% load static %}
-{% block extrahead %}
-    <link href="{% static 'output.css' %}" rel="stylesheet">
-{% endblock %}
+<style>
 
-<span id="name">{{ name }}</span>
-x
-<span id="weight">{{ weight }}</span>
-g
-<p></p>
-<a href="{% url 'index' %}">続ける</a>
-<p></p>
-<p></p>
-<h3 class="sample1">
-    <p>　　エネルギー　{{ h0 }}　kcal　({{ p0 }}%)</p>
-    <p>　　タンパク質　{{ h1 }}　g　({{ p1 }}%)</p>
-    <p>　　　食物繊維　{{ h2 }}　g　({{ p2 }}%)</p>
-    <p>　　ナトリウム　{{ h3 }}　mg　({{ p3 }}%)</p>
-    <p>　　　カリウム　{{ h4 }}　mg　({{ p4 }}%)</p>
-    <p>　　カルシウム　{{ h5 }}　mg　({{ p5 }}%)</p>
-    <p>　マグネシウム　{{ h6 }}　mg　({{ p6 }}%)</p>
-    <p>　　　　　リン　{{ h7 }}　mg　({{ p7 }}%)</p>
-    <p>　　　　　　鉄　{{ h8 }}　mg　({{ p8 }}%)</p>
-    <p>　　ビタミンＡ　{{ h18 }}　ug　({{ p18 }}%)</p>
-    <p>　ビタミンＢ１　{{ h9 }}　mg　({{ p9 }}%)</p>
-    <p>　ビタミンＢ２　{{ h10 }}　mg　({{ p10 }}%)</p>
-    <p>　ビタミンＢ６　{{ h11 }}　mg　({{ p11 }}%)</p>
-    <p>ビタミンＢ１２　{{ h12 }}　ug　({{ p12 }}%)</p>
-    <p>　　ビタミンＣ　{{ h14 }}　mg　({{ p14 }}%)</p>
-    <p>　　ビタミンＤ　{{ h15 }}　ug　({{ p15 }}%)</p>
-    <p>　　ビタミンＥ　{{ h19 }}　mg　({{ p19 }}%)</p>
-    <p>　　ナイアシン　{{ h13 }}　mg　({{ p13 }}%)</p>
-    <p>　　　　　葉酸　{{ h16 }}　ug　({{ p16 }}%)</p>
-    <p>　パントテン酸　{{ h17 }}　mg　({{ p17 }}%)</p>
-    <p>　　食塩相当量　{{ h20 }}　g　({{ p20 }}%)</p>
-</h3>
-<a href="{% url 'logout' %}">ログアウト</a>
+    a#con {
+        font-size: 180%;
+        display: block;
+        margin-right: auto;
+        width: 3.3em;
+        height: 1.3em;
+        font-weight: bold; /*太字に*/
+        background: orange; /*背景を水色に*/
+        color: white; /*文字を白に*/
+        padding: 5px 10px; /*内側の余白*/
+        border-radius: 20px; /*角を丸くする*/
+        font-family: 'Avenir', 'Arial'; /*フォントをいい感じに*/
+    }
 
+    a#fin {
+        font-size: 200%;
+        display: block;
+        margin-right: auto;
+        width: 5em;
+        height: 2em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .name {
+        text-align: center;
+        float: left;
+        margin-left: 2em;
+    }
+
+    .tan {
+        float: left;
+        margin-left: 0;
+    }
+
+    .weight {
+        float: left;
+    }
+
+    .par {
+        float: left;
+        text-align: right;
+    }
+
+    p#t {
+        height: 1em;
+        margin-top: 0.1em;
+        font-size: 30px;
+        border-bottom: thin solid seagreen;
+        margin-bottom: 0.1em;
+        height: 1.3em;
+        padding: 0em 0.1em 0em 0.1em;
+    }
+
+    p#ti {
+        height: 1em;
+        margin-top: 0.1em;
+        font-size: 30px;
+        border-bottom: thin solid seagreen;
+        margin-bottom: 0.1em;
+        height: 1.3em;
+        padding: 0em 0.3em 0em 0.3em;
+        text-align: right;
+    }
+
+    p#tt {
+        margin-top: 0.1em;
+        font-size: 30px;
+        border-bottom: thin solid seagreen;
+        margin-bottom: 0.1em;
+        height: 1.3em;
+        padding: 0em 0.5em 0em 0em;
+        text-align: right;
+    }
+
+
+    .topic {
+        text-align: center;
+        font-size: 30px;
+    }
+
+    #name {
+        font-size: 20px;
+        float: left;
+    }
+
+    #weight {
+        font-size: 20px;
+        float: left;
+        margin-left: 1em;
+    }
+
+    #num {
+        font-size: 20px;
+        float: left;
+        width: 2em;
+        text-align: right;
+    }
+
+</style>
+<a id='con' href="{% url 'index' %}">続ける</a>
+<div id="num">
+    {% for i in range %}
+        <p style="color: #dc143c">{{ i }}</p>
+    {% endfor %}
+</div>
+<div id="name">
+    {% for i in name %}
+        <p style="color: #dc143c">:{{ i }}</p>
+    {% endfor %}
+</div>
+<div id="weight">
+    {% for i in weight %}
+        <p style="color: grey; text-align: right">{{ i }}g</p>
+    {% endfor %}
+</div>
+
+<div class='name'>
+    <p id="t" class='topic'>(要素)</p>
+    <p id="t">エネルギー</p>
+    <p id="t">タンパク質</p>
+    <p id="t">食物繊維</p>
+    <p id="t">ナトリウム</p>
+    <p id="t">カリウム</p>
+    <p id="t">カルシウム</p>
+    <p id="t">マグネシウム</p>
+    <p id="t">リン</p>
+    <p id="t">鉄</p>
+    <p id="t">ビタミンＡ</p>
+    <p id="t">ビタミンＢ１</p>
+    <p id="t">ビタミンＢ２</p>
+    <p id="t">ビタミンＢ６</p>
+    <p id="t">ビタミンＢ１２</p>
+    <p id="t">ビタミンＣ</p>
+    <p id="t">ビタミンＤ</p>
+    <p id="t">ビタミンＥ</p>
+    <p id="t">ナイアシン</p>
+    <p id="t">葉酸</p>
+    <p id="t">パントテン酸</p>
+    <p id="t">食塩相当量</p>
+</div>
+
+<div class='weight'>
+    <p id="ti" class='topic'>(量)</p>
+    <p id="ti">  {{ h0 }} </p>
+    <p id="ti">  {{ h1 }} </p>
+    <p id="ti">  {{ h2 }} </p>
+    <p id="ti">  {{ h3 }} </p>
+    <p id="ti">  {{ h4 }} </p>
+    <p id="ti">  {{ h5 }} </p>
+    <p id="ti">  {{ h6 }} </p>
+    <p id="ti">  {{ h7 }} </p>
+    <p id="ti">  {{ h8 }} </p>
+    <p id="ti">  {{ h18 }} </p>
+    <p id="ti">  {{ h9 }} </p>
+    <p id="ti">  {{ h10 }} </p>
+    <p id="ti">  {{ h11 }} </p>
+    <p id="ti">  {{ h12 }} </p>
+    <p id="ti">  {{ h14 }} </p>
+    <p id="ti">  {{ h15 }} </p>
+    <p id="ti">  {{ h19 }} </p>
+    <p id="ti">  {{ h13 }} </p>
+    <p id="ti">  {{ h16 }} </p>
+    <p id="ti">  {{ h17 }} </p>
+    <p id="ti">  {{ h20 }} </p>
+</div>
+
+<div class="tan">
+    <p id="t" class='topic'></p>
+    <p id="tt">kcal</p>
+    <p id="tt">g</p>
+    <p id="tt">g</p>
+    <p id="tt">mg</p>
+    <p id="tt">mg</p>
+    <p id="tt">mg</p>
+    <p id="tt">mg</p>
+    <p id="tt">mg</p>
+    <p id="tt">mg</p>
+    <p id="tt">µg</p>
+    <p id="tt">mg</p>
+    <p id="tt">mg</p>
+    <p id="tt">mg</p>
+    <p id="tt">µg</p>
+    <p id="tt">mg</p>
+    <p id="tt">µg</p>
+    <p id="tt">mg</p>
+    <p id="tt">mg</p>
+    <p id="tt">µg</p>
+    <p id="tt">mg</p>
+    <p id="tt">g</p>
+
+</div>
+
+<div class='par'>
+    <p id="t" class='topic' style=text-align:right;>(/day)</p>
+    <p id="t">  {{ p0 }}%</p>
+    <p id="t">  {{ p1 }}%</p>
+    <p id="t">  {{ p2 }}%</p>
+    <p id="t">  {{ p3 }}%</p>
+    <p id="t">  {{ p4 }}%</p>
+    <p id="t">  {{ p5 }}%</p>
+    <p id="t">  {{ p6 }}%</p>
+    <p id="t">  {{ p7 }}%</p>
+    <p id="t">  {{ p8 }}%</p>
+    <p id="t">  {{ p18 }}%</p>
+    <p id="t">  {{ p9 }}%</p>
+    <p id="t">  {{ p10 }}%</p>
+    <p id="t">  {{ p11 }}%</p>
+    <p id="t">  {{ p12 }}%</p>
+    <p id="t">  {{ p14 }}%</p>
+    <p id="t">  {{ p15 }}%</p>
+    <p id="t">  {{ p19 }}%</p>
+    <p id="t">  {{ p13 }}%</p>
+    <p id="t">  {{ p16 }}%</p>
+    <p id="t">  {{ p17 }}%</p>
+    <p id="t">  {{ p20 }}%</p>
+
+</div>
+
+<a id='fin' href="{% url 'out' %}">ログアウト</a>
 
 </body>
 </html>
