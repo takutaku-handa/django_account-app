@@ -8,11 +8,14 @@
 <style>
 
     a#con {
-        font-size: 180%;
+        font-size: 3em;
         display: block;
-        margin-right: auto;
-        width: 3.3em;
-        height: 1.3em;
+        margin-left: 2em;
+        margin-top: 2em;
+        margin-bottom: 1em;
+        width: 5em;
+        height: 1.2em;
+        text-align: center;
         font-weight: bold; /*太字に*/
         background: orange; /*背景を水色に*/
         color: white; /*文字を白に*/
@@ -56,7 +59,7 @@
         margin-top: 0.1em;
         font-size: 30px;
         border-bottom: thin solid seagreen;
-        margin-bottom: 0.1em;
+        margin-bottom: 0.4em;
         height: 1.3em;
         padding: 0em 0.1em 0em 0.1em;
     }
@@ -66,7 +69,7 @@
         margin-top: 0.1em;
         font-size: 30px;
         border-bottom: thin solid seagreen;
-        margin-bottom: 0.1em;
+        margin-bottom: 0.4em;
         height: 1.3em;
         padding: 0em 0.3em 0em 0.3em;
         text-align: right;
@@ -76,7 +79,7 @@
         margin-top: 0.1em;
         font-size: 30px;
         border-bottom: thin solid seagreen;
-        margin-bottom: 0.1em;
+        margin-bottom: 0.4em;
         height: 1.3em;
         padding: 0em 0.5em 0em 0em;
         text-align: right;
@@ -101,26 +104,28 @@
 
     #num {
         font-size: 20px;
+        color: black;
         float: left;
         width: 2em;
         text-align: right;
     }
 
 </style>
+
 <a id='con' href="{% url 'index' %}">続ける</a>
 <div id="num">
     {% for i in range %}
-        <p style="color: #dc143c">{{ i }}</p>
+    <p>{{ i }}</p>
     {% endfor %}
 </div>
 <div id="name">
-    {% for i in name %}
-        <p style="color: #dc143c">:{{ i }}</p>
+    {% for i in user.profile.foodname %}
+    <p style="color: #dc143c">"{{i}}"</p>
     {% endfor %}
 </div>
 <div id="weight">
-    {% for i in weight %}
-        <p style="color: grey; text-align: right">{{ i }}g</p>
+    {% for i in user.profile.foodweight %}
+    <p style="color: grey; text-align: right">{{ i }}g</p>
     {% endfor %}
 </div>
 
@@ -151,27 +156,27 @@
 
 <div class='weight'>
     <p id="ti" class='topic'>(量)</p>
-    <p id="ti">  {{ h0 }} </p>
-    <p id="ti">  {{ h1 }} </p>
-    <p id="ti">  {{ h2 }} </p>
-    <p id="ti">  {{ h3 }} </p>
-    <p id="ti">  {{ h4 }} </p>
-    <p id="ti">  {{ h5 }} </p>
-    <p id="ti">  {{ h6 }} </p>
-    <p id="ti">  {{ h7 }} </p>
-    <p id="ti">  {{ h8 }} </p>
-    <p id="ti">  {{ h18 }} </p>
-    <p id="ti">  {{ h9 }} </p>
-    <p id="ti">  {{ h10 }} </p>
-    <p id="ti">  {{ h11 }} </p>
-    <p id="ti">  {{ h12 }} </p>
-    <p id="ti">  {{ h14 }} </p>
-    <p id="ti">  {{ h15 }} </p>
-    <p id="ti">  {{ h19 }} </p>
-    <p id="ti">  {{ h13 }} </p>
-    <p id="ti">  {{ h16 }} </p>
-    <p id="ti">  {{ h17 }} </p>
-    <p id="ti">  {{ h20 }} </p>
+    <p id="ti"> {{ h0 }} </p>
+    <p id="ti"> {{ h1 }} </p>
+    <p id="ti"> {{ h2 }} </p>
+    <p id="ti"> {{ h3 }} </p>
+    <p id="ti"> {{ h4 }} </p>
+    <p id="ti"> {{ h5 }} </p>
+    <p id="ti"> {{ h6 }} </p>
+    <p id="ti"> {{ h7 }} </p>
+    <p id="ti"> {{ h8 }} </p>
+    <p id="ti"> {{ h18 }} </p>
+    <p id="ti"> {{ h9 }} </p>
+    <p id="ti"> {{ h10 }} </p>
+    <p id="ti"> {{ h11 }} </p>
+    <p id="ti"> {{ h12 }} </p>
+    <p id="ti"> {{ h14 }} </p>
+    <p id="ti"> {{ h15 }} </p>
+    <p id="ti"> {{ h19 }} </p>
+    <p id="ti"> {{ h13 }} </p>
+    <p id="ti"> {{ h16 }} </p>
+    <p id="ti"> {{ h17 }} </p>
+    <p id="ti"> {{ h20 }} </p>
 </div>
 
 <div class="tan">
@@ -202,27 +207,27 @@
 
 <div class='par'>
     <p id="t" class='topic' style=text-align:right;>(/day)</p>
-    <p id="t">  {{ p0 }}%</p>
-    <p id="t">  {{ p1 }}%</p>
-    <p id="t">  {{ p2 }}%</p>
-    <p id="t">  {{ p3 }}%</p>
-    <p id="t">  {{ p4 }}%</p>
-    <p id="t">  {{ p5 }}%</p>
-    <p id="t">  {{ p6 }}%</p>
-    <p id="t">  {{ p7 }}%</p>
-    <p id="t">  {{ p8 }}%</p>
-    <p id="t">  {{ p18 }}%</p>
-    <p id="t">  {{ p9 }}%</p>
-    <p id="t">  {{ p10 }}%</p>
-    <p id="t">  {{ p11 }}%</p>
-    <p id="t">  {{ p12 }}%</p>
-    <p id="t">  {{ p14 }}%</p>
-    <p id="t">  {{ p15 }}%</p>
-    <p id="t">  {{ p19 }}%</p>
-    <p id="t">  {{ p13 }}%</p>
-    <p id="t">  {{ p16 }}%</p>
-    <p id="t">  {{ p17 }}%</p>
-    <p id="t">  {{ p20 }}%</p>
+    <p id="t"> {{ p0 }}%</p>
+    <p id="t"> {{ p1 }}%</p>
+    <p id="t"> {{ p2 }}%</p>
+    <p id="t"> {{ p3 }}%</p>
+    <p id="t"> {{ p4 }}%</p>
+    <p id="t"> {{ p5 }}%</p>
+    <p id="t"> {{ p6 }}%</p>
+    <p id="t"> {{ p7 }}%</p>
+    <p id="t"> {{ p8 }}%</p>
+    <p id="t"> {{ p18 }}%</p>
+    <p id="t"> {{ p9 }}%</p>
+    <p id="t"> {{ p10 }}%</p>
+    <p id="t"> {{ p11 }}%</p>
+    <p id="t"> {{ p12 }}%</p>
+    <p id="t"> {{ p14 }}%</p>
+    <p id="t"> {{ p15 }}%</p>
+    <p id="t"> {{ p19 }}%</p>
+    <p id="t"> {{ p13 }}%</p>
+    <p id="t"> {{ p16 }}%</p>
+    <p id="t"> {{ p17 }}%</p>
+    <p id="t"> {{ p20 }}%</p>
 
 </div>
 

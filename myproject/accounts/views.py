@@ -9,6 +9,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 from . import forms
+from .models import Profile
 
 
 class MyLoginView(LoginView):
@@ -42,12 +43,7 @@ eiy = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, ]
 hyo = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ]
 par = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ]
-ran = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,)
-
-foodname = []
-foodweight = []
-checkedfood = []
-checkweight = []
+ran = ("(ex)", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,)
 
 
 
@@ -71,50 +67,30 @@ def hyouji(x):
     par[x] += round(p, 1)
     hyo[x] += round(eiy[x], 1)
 
-
+"""
 def reset():
     for i in range(0, 21):
         eiy[i] = 0.0
         hyo[i] = 0.0
         par[i] = 0.0
-        foodname.clear()
-        foodweight.clear()
-
-
-"""
-def delete():
-    for t in foodname:
-        if t == "":
-            del foodname[t]
+    foodname.clear()
+    foodweight.clear()
 """
 
-
-# スタート
 def out(f, w):
     try:
         num = lists_food.index(f)
-        num = int(num)
     except ValueError:
         num = -8
-        if f == "":
-            foodname.append("")
-        else:
-            foodname.append("???")
     else:
-        f = f.replace("\u3000", " ")
-        foodname.append(f)
+        num = int(num)
 
     try:
         inn = int(w)
     except ValueError:
         inn = 0
-        if w == "":
-            foodweight.append(w)
-        else:
-            iinn = "???"
-            foodweight.append(iinn)
     else:
-        foodweight.append(inn)
+        pass
 
     # エネルギーからパントテン酸
     for n in range(0, 18):
@@ -133,7 +109,10 @@ def out(f, w):
 
 
 def out_out(ff, ww):
-    reset()
+    for i in range(0, 21):
+        eiy[i] = 0.0
+        hyo[i] = 0.0
+        par[i] = 0.0
     for j in range(0, 20):
         f = ff[j]
         w = ww[j]
@@ -143,81 +122,133 @@ def out_out(ff, ww):
     for i in range(0, 21):
         par[i] = round(par[i], 1)
         hyo[i] = round(hyo[i], 1)
-    """
-    delete()
-    """
 
 
 @login_required
 def indexview(request):
     templates = loader.get_template("index.html")
-    contexts = {"checkedfood": checkedfood,
-                "checkweight": checkweight}
+    contexts = {}
     return HttpResponse(templates.render(contexts, request))
 
 
 def list_indexview(request):
+    user = request.user.id
+    p = Profile.objects.get(user=user)
     templates = loader.get_template("index.html")
     checked_food = request.POST.getlist("checkbox")
-    checklist = [i for i in checkedfood if i != ""]
+    checklist = [i for i in p.checkedfood if i != " "]
     for d in checked_food:
         checklist.append(d)
+    p.checkedfood = checklist
+    """
     for r in range(0, 20):
         checkedfood.append("")
-    contexts = {"checkedfood": checklist,
-                "checkweight": checkweight,
-                }
+    """
+    contexts = {}
+    p.save()
     return HttpResponse(templates.render(contexts, request))
 
 
 def reset_view(request):
+    user = request.user.id
+    p = Profile.objects.get(user=user)
     templat = loader.get_template("index.html")
-    checkedfood.clear()
+    p.checkedfood = ["食品"]
+    p.checkweight = ["量"]
+    p.foodname = ["食品"]
+    p.foodweight = ["量"]
+    """
     for i in range(0, 20):
         checkedfood.append("")
-    contex = {"checkedfood": checkedfood, }
+    """
+    contex = {}
+    p.save()
     return HttpResponse(templat.render(contex, request))
 
 
 def listview(request):
-    checkedfood.clear()
-    checkweight.clear()
+    user = request.user.id
+    p = Profile.objects.get(user=user)
+    p.checkedfood = ["食品"]
+    p.checkweight = ["量"]
     foodfood = request.POST.getlist("food")
     weightweight = request.POST.getlist("weight")
     for uh in foodfood:
-        checkedfood.append(uh)
+        if uh == "":
+            pass
+            """
+            p.checkedfood.append(" ")
+            """
+        else:
+            p.checkedfood.append(uh)
+    """
     for ug in range(0, 20):
-        checkedfood.append("")
+        p.checkedfood.append("")
+    """
     for uw in weightweight:
-        checkweight.append(uw)
+        if uw == "":
+            pass
+            """
+            p.checkweight.append(" ")
+            """
+        else:
+            p.checkweight.append(uw)
+    """
     for uq in range(0, 20):
-        checkweight.append("")
+        p.checkweight.append("")
+    """
     template = loader.get_template("list.html")
     context = {"list": lists_food}
+    p.save()
     return HttpResponse(template.render(context, request))
 
 
 def outview(request):
-    checkweight.clear()
+    user = request.user.id
+    p = Profile.objects.get(user=user)
     templatess = loader.get_template("out.html")
     contextss = {}
+    p.save()
     return HttpResponse(templatess.render(contextss, request))
 
 
 def outputview(request):
+    user = request.user.id
+    p = Profile.objects.get(user=user)
     food_input = request.POST.getlist("food")
-    checkedfood.clear()
+    p.checkedfood = ["食品"]
+    p.checkweight = ["量"]
+    p.foodname = ["食品"]
+    p.foodweight = ["量"]
     for i in food_input:
-        checkedfood.append(i)
+        try:
+            num = lists_food.index(i)
+        except ValueError:
+            if i == "":
+                pass
+            else:
+                p.foodname.append("???")
+                p.checkedfood.append(i)
+        else:
+            p.checkedfood.append(i)
+            ii = i.replace("\u3000", " ")
+            p.foodname.append(ii)
     weight_input = request.POST.getlist("weight")
-    checkweight.clear()
     for i in weight_input:
-        checkweight.append(i)
+        try:
+            inn = int(i)
+        except ValueError:
+            if i == "":
+                pass
+            else:
+                p.foodweight.append("???")
+                p.checkweight.append(i)
+        else:
+            p.checkweight.append(i)
+            p.foodweight.append(i)
     out_out(food_input, weight_input)
     template = loader.get_template("output.html")
-    context = {"name": foodname,
-               "weight": foodweight,
-               "range": ran,
+    context = {"range": ran,
                "h0": hyo[0],
                "h1": hyo[1],
                "h2": hyo[2],
@@ -261,9 +292,9 @@ def outputview(request):
                "p19": par[19],
                "p20": par[20],
                }
+    p.save()
     return HttpResponse(template.render(context, request))
 
 
 class MyLogoutView(LoginRequiredMixin, LogoutView):
-    checkweight.clear()
     template_name = "accounts/logout.html"

@@ -5,11 +5,48 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<style>
+    form {
+        font-size: 1.7em;
+    }
+    input {
+        font-size: 1em;
+    }
+
+    #cre {
+        display: block;
+        width: 9em;
+        height: 1.5em;
+        margin-left: auto;
+        margin-top: 0.5em;
+        font-size: 2.3em;
+        font-weight: bold; /*太字に*/
+        background: yellowgreen; /*背景を色に*/
+        color: white; /*文字を白に*/
+        padding: 2px 5px; /*内側の余白*/
+        border-radius: 20px; /*角を丸くする*/
+        font-family: 'Avenir', 'Arial'; /*フォントをいい感じに*/
+    }
+
+    button {
+        display: block;
+        font-size: 1em;
+        font-weight: bold; /*太字に*/
+        background: skyblue; /*背景を水色に*/
+        color: white; /*文字を白に*/
+        padding: 5px 10px; /*内側の余白*/
+        border-radius: 20px; /*角を丸くする*/
+        font-family: 'Avenir', 'Arial'; /*フォントをいい感じに*/
+        margin: 2em 2em 1em 3em;
+    }
+</style>
 <body>
 <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">ログイン</button>
+
 </form>
+<a id='cre' href="{% url 'create' %}">新規アカウント作成</a>
 </body>
 </html>

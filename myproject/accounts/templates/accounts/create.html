@@ -5,8 +5,29 @@
     <title>新規ユーザーの作成</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<style>
+    p#ss {
+        font-size: 1.5em;
+    }
+
+    input {
+        font-size: 1.5em;
+    }
+
+    button {
+        display: block;
+        font-size: 2em;
+        font-weight: bold; /*太字に*/
+        background: green; /*背景を水色に*/
+        color: white; /*文字を白に*/
+        padding: 5px 10px; /*内側の余白*/
+        border-radius: 20px; /*角を丸くする*/
+        font-family: 'Avenir', 'Arial'; /*フォントをいい感じに*/
+        margin: 2em 2em 1em 3em;
+    }
+</style>
 <body>
-<p>新規ユーザーの作成</p>
+<p id="ss">新規ユーザーの作成</p>
 <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}

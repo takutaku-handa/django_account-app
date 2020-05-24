@@ -21,9 +21,17 @@
   <component name="ChangeListManager">
     <list default="true" id="69e42c8f-d83d-4b63-8f30-82a00f8bb4ca" name="Default Changelist" comment="コミットしました">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/accounts/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/accounts/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/accounts/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/accounts/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/out.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/out.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/output.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/output.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/myproject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/myproject/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +64,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../HTML" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../django4" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -147,6 +155,8 @@
       <workItem from="1589727626175" duration="5100000" />
       <workItem from="1589795473673" duration="730000" />
       <workItem from="1589881558162" duration="26000" />
+      <workItem from="1590222885101" duration="4080000" />
+      <workItem from="1590235442069" duration="27310000" />
     </task>
     <task id="LOCAL-00001" summary="コミットしました">
       <created>1589539497550</created>
@@ -186,10 +196,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="264" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1589726647230" />
-    <state x="419" y="94" key="FileChooserDialogImpl" timestamp="1589881582199">
+    <state x="419" y="94" key="FileChooserDialogImpl" timestamp="1590246395997">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="419" y="94" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589881582199" />
+    <state x="419" y="94" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1590246395997" />
     <state width="1220" height="508" key="GridCell.Tab.0.bottom" timestamp="1589540834083">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -206,10 +216,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1220" height="508" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589540834083" />
-    <state x="255" y="0" key="SettingsEditor" timestamp="1589701736314">
+    <state x="255" y="0" key="SettingsEditor" timestamp="1590237599780">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="255" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589701736314" />
+    <state x="255" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1590237599780" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1589540784473">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

@@ -35,13 +35,15 @@
     input#it {
         width: 1.7em;
         height: 1.5em;
+        font-size: 1.3em;
     }
 
     #sub {
         position: fixed;
-        right: 100px;
-        top: 70px;
-        font-size: 1.7em;
+        bottom: 150px;
+        right: 20px;
+        font-size: 3em;
+        color: red;
     }
 
     div {
@@ -49,7 +51,6 @@
     }
 
 </style>
-
 
 <h1>食品名リスト</h1>
 <h2>種類別に並んでいます</h2>
@@ -59,7 +60,7 @@
     <div>
         {% csrf_token %}
         {% for i in list %}
-            <p><input id="it" type="checkbox" name="checkbox" value={{ i }}>{{ i }}</p>
+        <p><input id="it" type="checkbox" name="checkbox" value={{ i }}>{{ i }}</p>
         {% endfor %}
     </div>
 

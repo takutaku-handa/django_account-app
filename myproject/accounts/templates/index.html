@@ -12,11 +12,11 @@
         font-size: 300%;
         background: orange;
         font-weight: bold;
+        margin-bottom: 0em;
     }
 
     h3 {
-        margin-top: 1em;
-        margin-bottom: 2em;
+        margin-bottom: 0.6em;
     }
 
     * {
@@ -31,7 +31,7 @@
         padding: 5px 10px; /*内側の余白*/
         border-radius: 20px; /*角を丸くする*/
         font-family: 'Avenir', 'Arial'; /*フォントをいい感じに*/
-        margin: 5em 2em 1em 3em;
+        margin-bottom: 1em;
     }
 
     #reset {
@@ -40,7 +40,6 @@
         padding: 5px 10px; /*内側の余白*/
         border-radius: 20px; /*角を丸くする*/
         font-family: 'Avenir', 'Arial'; /*フォントをいい感じに*/
-        margin: 5em 2em 1em 3em;
     }
 
     input#text1 {
@@ -61,8 +60,8 @@
         width: 10em;
         height: 2em;
         margin-left: auto;
-        margin-top: 0.5em;
-        font-size: 2em;
+        margin-top: 1.5em;
+        font-size: 1.5em;
         font-weight: bold; /*太字に*/
         background: yellowgreen; /*背景を色に*/
         color: white; /*文字を白に*/
@@ -78,21 +77,29 @@
 
     #submit {
         position: fixed;
-        bottom: 0px;
-        right: 50px;
+        bottom: 30px;
+        right: 60px;
         text-align: center;
-        font-size: 2.8em;
+        font-size: 1.7em;
         background: darkgreen;
+    }
+
+    h4#u {
+        margin-bottom: 0.2em;]
+        margin-top: 1em;
+    }
+    h4#i {
+        margin-top: 0.2em;
     }
 
 </style>
 
-
 <h1>トップページ</h1></p>
+<h3>ようこそ、{{user.profile.user}}さん</h3>
 
-<h3>'食品名'と'量'を入力してください(最大20品目）</h3>
+<h4 id="u">食品名と量を入力してください</h4>
+<h4 id="i">(最大２０品目）</h4>
 <a id="reset" href="{% url 'reset' %}">リセット</a>
-
 
 
 <form method="post" action="{% url 'output' %}" , id='post'>
@@ -101,64 +108,66 @@
 
     {% csrf_token %}
     <div>
-        ①<input id='text1' type="text" name="food" value={{ checkedfood.0 }}> x <input id='text2' type="text"
-                                                                                      name="weight" value={{ checkweight.0 }}> g
-        ②<input id='text1' type="text" name="food" value={{ checkedfood.1 }}> x <input id='text2' type="text"
-                                                                                      name="weight" value={{ checkweight.1 }}> g
+        ①<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.1 }}> x <input id='text2' type="text"
+                                                                                       name="weight"
+                                                                                       value={{user.profile.checkweight.1}}> g
+        ②<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.2 }}> x <input id='text2' type="text"
+                                                                                       name="weight"
+                                                                                       value={{user.profile.checkweight.2}}> g
     </div>
     <div>
-        ➂<input id='text1' type="text" name="food" value={{ checkedfood.2 }}> x <input id='text2' type="text"
-                                                                                      name="weight" value={{ checkweight.2 }}> g
-        ④<input id='text1' type="text" name="food" value={{ checkedfood.3 }}> x <input id='text2' type="text"
-                                                                                      name="weight" value={{ checkweight.3 }}> g
+        ➂<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.3 }}> x <input id='text2' type="text"
+                                                                                       name="weight" value={{user.profile.checkweight.3}}> g
+        ④<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.4 }}> x <input id='text2' type="text"
+                                                                                       name="weight" value={{user.profile.checkweight.4}}> g
     </div>
     <div>
-        ⑤<input id='text1' type="text" name="food" value={{ checkedfood.4 }}> x <input id='text2' type="text"
-                                                                                      name="weight" value={{ checkweight.4 }}> g
-        ⑥<input id='text1' type="text" name="food" value={{ checkedfood.5 }}> x <input id='text2' type="text"
-                                                                                      name="weight" value={{ checkweight.5 }}> g
+        ⑤<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.5 }}> x <input id='text2' type="text"
+                                                                                       name="weight" value={{user.profile.checkweight.5}}> g
+        ⑥<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.6 }}> x <input id='text2' type="text"
+                                                                                       name="weight" value={{user.profile.checkweight.6}}> g
     </div>
     <div>
-        ⑦<input id='text1' type="text" name="food" value={{ checkedfood.6 }}> x <input id='text2' type="text"
-                                                                                      name="weight" value={{ checkweight.6 }}> g
-        ⑧<input id='text1' type="text" name="food" value={{ checkedfood.7 }}> x <input id='text2' type="text"
-                                                                                      name="weight" value={{ checkweight.7 }}> g
+        ⑦<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.7 }}> x <input id='text2' type="text"
+                                                                                       name="weight" value={{user.profile.checkweight.7}}> g
+        ⑧<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.8 }}> x <input id='text2' type="text"
+                                                                                       name="weight" value={{user.profile.checkweight.8}}> g
     </div>
     <div>
-        ⑨<input id='text1' type="text" name="food" value={{ checkedfood.8 }}> x <input id='text2' type="text"
-                                                                                      name="weight" value={{ checkweight.8 }}> g
-        ⑩<input id='text1' type="text" name="food" value={{ checkedfood.9 }}> x <input id='text2' type="text"
-                                                                                      name="weight" value={{ checkweight.9 }}> g
+        ⑨<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.9 }}> x <input id='text2' type="text"
+                                                                                       name="weight" value={{user.profile.checkweight.9}}> g
+        ⑩<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.10 }}> x <input id='text2' type="text"
+                                                                                       name="weight" value={{user.profile.checkweight.10}}> g
     </div>
     <div>
-        ⑪<input id='text1' type="text" name="food" value={{ checkedfood.10 }}> x <input id='text2' type="text"
-                                                                                       name="weight" value={{ checkweight.10 }}> g
-        ⑫<input id='text1' type="text" name="food" value={{ checkedfood.11 }}> x <input id='text2' type="text"
-                                                                                       name="weight" value={{ checkweight.11 }}> g
+        ⑪<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.11 }}> x <input id='text2' type="text"
+                                                                                        name="weight" value={{user.profile.checkweight.11}}> g
+        ⑫<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.12 }}> x <input id='text2' type="text"
+                                                                                        name="weight" value={{user.profile.checkweight.12}}> g
     </div>
     <div>
-        ⑬<input id='text1' type="text" name="food" value={{ checkedfood.12 }}> x <input id='text2' type="text"
-                                                                                       name="weight" value={{ checkweight.12 }}> g
-        ⑭<input id='text1' type="text" name="food" value={{ checkedfood.13 }}> x <input id='text2' type="text"
-                                                                                       name="weight" value={{ checkweight.13 }}> g
+        ⑬<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.13 }}> x <input id='text2' type="text"
+                                                                                        name="weight" value={{user.profile.checkweight.13}}> g
+        ⑭<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.14 }}> x <input id='text2' type="text"
+                                                                                        name="weight" value={{user.profile.checkweight.14}}> g
     </div>
     <div>
-        ⑮<input id='text1' type="text" name="food" value={{ checkedfood.14 }}> x <input id='text2' type="text"
-                                                                                       name="weight" value={{ checkweight.14 }}> g
-        ⑯<input id='text1' type="text" name="food" value={{ checkedfood.15 }}> x <input id='text2' type="text"
-                                                                                       name="weight" value={{ checkweight.15 }}> g
+        ⑮<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.15 }}> x <input id='text2' type="text"
+                                                                                        name="weight" value={{user.profile.checkweight.15}}> g
+        ⑯<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.16 }}> x <input id='text2' type="text"
+                                                                                        name="weight" value={{user.profile.checkweight.16}}> g
     </div>
     <div>
-        ⑰<input id='text1' type="text" name="food" value={{ checkedfood.16 }}> x <input id='text2' type="text"
-                                                                                       name="weight" value={{ checkweight.16 }}> g
-        ⑱<input id='text1' type="text" name="food" value={{ checkedfood.17 }}> x <input id='text2' type="text"
-                                                                                       name="weight" value={{ checkweight.17 }}> g
+        ⑰<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.17 }}> x <input id='text2' type="text"
+                                                                                        name="weight" value={{user.profile.checkweight.17}}> g
+        ⑱<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.18 }}> x <input id='text2' type="text"
+                                                                                        name="weight" value={{user.profile.checkweight.18}}> g
     </div>
     <div>
-        ⑲<input id='text1' type="text" name="food" value={{ checkedfood.18 }}> x <input id='text2' type="text"
-                                                                                       name="weight" value={{ checkweight.18 }}> g
-        ⑳<input id='text1' type="text" name="food" value={{ checkedfood.19 }}> x <input id='text2' type="text"
-                                                                                       name="weight" value={{ checkweight.19 }}> g
+        ⑲<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.19 }}> x <input id='text2' type="text"
+                                                                                        name="weight" value={{user.profile.checkweight.19}}> g
+        ⑳<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.20 }}> x <input id='text2' type="text"
+                                                                                        name="weight" value={{user.profile.checkweight.20}}> g
     </div>
 
 
