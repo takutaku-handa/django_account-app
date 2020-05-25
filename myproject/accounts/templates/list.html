@@ -7,7 +7,7 @@
 <body>
 <style>
     p {
-        font-size: 1.5em;
+        font-size: 1.4em;
         margin: 0.2em;
     }
 
@@ -33,9 +33,10 @@
     }
 
     input#it {
-        width: 1.7em;
-        height: 1.5em;
-        font-size: 1.3em;
+        width: 1.4em;
+        height: 1.4em;
+        font-size: 1em;
+        margin: 0;
     }
 
     #sub {
@@ -50,6 +51,15 @@
         margin-left: 2em;
     }
 
+    #uuum {
+        font-weight: bold; /*太字に*/
+        color: white; /*文字を白に*/
+        padding: 5px 10px; /*内側の余白*/
+        border-radius: 20px; /*角を丸くする*/
+        font-family: 'Avenir', 'Arial'; /*フォントをいい感じに*/
+        text-align: center;
+    }
+
 </style>
 
 <h1>食品名リスト</h1>
@@ -57,12 +67,39 @@
 <a href="{% url 'index' %}">戻る</a>
 
 <form action="{% url 'list_index' %}" method="post">
-    <div>
+    <div style="float: left">
         {% csrf_token %}
-        {% for i in list %}
+        <p id="uuum" style="background: yellowgreen">野菜・果物・きのこ</p>
+        {% for i in lists_1 %}
         <p><input id="it" type="checkbox" name="checkbox" value={{ i }}>{{ i }}</p>
         {% endfor %}
     </div>
+    <div style="float: left">
+        {% csrf_token %}
+        <p id="uuum" style="background: crimson">豆・魚・肉・乳</p>
+        {% for i in lists_2 %}
+        <p><input id="it" type="checkbox" name="checkbox" value={{ i }}>{{ i }}</p>
+        {% endfor %}
+    </div>
+    <div style="float: left">
+        {% csrf_token %}
+        <p id="uuum" style="background: gold">穀物・芋・調味料</p>
+        {% for i in lists_0 %}
+        <p><input id="it" type="checkbox" name="checkbox" value={{ i }}>{{ i }}</p>
+        {% endfor %}
+
+    <!--
+    <div style="float: left; margin-top: 20px; margin-left: 0em">
+        {% for i in list2 %}
+        <p style="height: 57.344px; text-align: right">{{i}}g</p>
+        {% endfor %}
+    </div>
+    <div style="float: left; margin-top: 20px; margin-left: 0em">
+        {% for i in list3 %}
+        <p style="height: 57.344px">/{{i}}</p>
+        {% endfor %}
+    </div>
+    -->
 
     <p><input id="sub" type="submit" value="追加する"></p>
 </form>

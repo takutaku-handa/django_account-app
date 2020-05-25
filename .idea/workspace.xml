@@ -21,17 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="69e42c8f-d83d-4b63-8f30-82a00f8bb4ca" name="Default Changelist" comment="コミットしました">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/accounts/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/accounts/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/accounts/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/accounts/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/accounts/FOOD.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/accounts/FOOD.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/out.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/out.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/accounts/templates/output.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/templates/output.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/myproject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/myproject/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +153,7 @@
       <workItem from="1589881558162" duration="26000" />
       <workItem from="1590222885101" duration="4080000" />
       <workItem from="1590235442069" duration="27310000" />
+      <workItem from="1590311887795" duration="32607000" />
     </task>
     <task id="LOCAL-00001" summary="コミットしました">
       <created>1589539497550</created>

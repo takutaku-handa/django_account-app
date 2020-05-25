@@ -24,15 +24,57 @@ class UserCreateView(CreateView):
 
 
 # excelシートの読み込み
-book = openpyxl.load_workbook("accounts/FOOD.xlsx")
+book = openpyxl.load_workbook("accounts/templates/accounts/FOOD.xlsx")
 sheet = book["本表"]
 
 # 食べ物の名前のリストを作り、番号を返す
 lists_food = []
-for i in range(9, 319):
+for i in range(9, 313):
     x = sheet["B" + str(i)].value
     lists_food.append(x)
 
+lists_0 = []
+for i in range(9, 62):
+    x = sheet["B" + str(i)].value
+    lists_0.append(x)
+for i in range(281, 313):
+    x = sheet["B" + str(i)].value
+    lists_0.append(x)
+
+
+lists_1 = []
+for i in range(83, 192):
+    x = sheet["B" + str(i)].value
+    lists_1.append(x)
+
+
+lists_2 = []
+for i in range(62, 83):
+    x = sheet["B" + str(i)].value
+    lists_2.append(x)
+for i in range(198, 281):
+    x = sheet["B" + str(i)].value
+    lists_2.append(x)
+
+
+
+"""
+lists_r = []
+for i in range(9, 313):
+    x = sheet["AN" + str(i)].value
+    if type(x) == type(None):
+        lists_r.append("?")
+    else:
+     lists_r.append(x)
+
+lists_p = []
+for i in range(9, 313):
+    x = sheet["AO" + str(i)].value
+    if type(x) == type(None):
+        lists_p.append("個")
+    else:
+        lists_p.append(x)
+"""
 # リスト集
 cell = (
     "C", "D", "E", "F", "G", "H", "I", "J", "K", "W", "X", "Z", "AA", "Y", "AD", "R", "AB", "AC", "L", "M", "N", "O",
@@ -45,6 +87,11 @@ hyo = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 par = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ]
 ran = ("(ex)", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,)
 
+ranran = []
+for i in range(0, 304):
+    ranran.append(i)
+
+hyoujiweight = []
 
 
 # 関数集
@@ -67,48 +114,88 @@ def hyouji(x):
     par[x] += round(p, 1)
     hyo[x] += round(eiy[x], 1)
 
-"""
-def reset():
-    for i in range(0, 21):
-        eiy[i] = 0.0
-        hyo[i] = 0.0
-        par[i] = 0.0
-    foodname.clear()
-    foodweight.clear()
-"""
 
-def out(f, w):
+def kosuu(num, q):
+    if q == "個":
+        r = sheet["AG" + str(num + 9)].value
+        if type(r) == type(None):
+            r = 0
+    elif q == "枚":
+        r = sheet["AH" + str(num + 9)].value
+        if type(r) == type(None):
+            r = 0
+    elif q == "玉":
+        r = sheet["AI" + str(num + 9)].value
+        if type(r) == type(None):
+            r = 0
+    elif q == "合":
+        r = sheet["AJ" + str(num + 9)].value
+        if type(r) == type(None):
+            r = 0
+    elif q == "尾":
+        r = sheet["AK" + str(num + 9)].value
+        if type(r) == type(None):
+            r = 0
+    elif q == "切":
+        r = sheet["AL" + str(num + 9)].value
+        if type(r) == type(None):
+            r = 0
+    elif q == "cc":
+        r = sheet["AM" + str(num + 9)].value
+        if type(r) == type(None):
+            r = 0
+    else:
+        r = 1
+
+    return r
+
+
+def out(f, w, q):
     try:
         num = lists_food.index(f)
     except ValueError:
-        num = -8
+        num = 304
     else:
         num = int(num)
 
     try:
-        inn = int(w)
+        inn = float(w)
     except ValueError:
         inn = 0
     else:
         pass
 
+    r = kosuu(num, q)
+    if num == 304:
+        hyoujiweight.append("")
+    elif inn == 0:
+        hyoujiweight.append("???g")
+    elif r == 0:
+        hyoujiweight.append("(無効な単位)")
+    else:
+        g = round(inn * r, 1)
+        gg = str(g) + "g"
+        hyoujiweight.append(gg)
+
     # エネルギーからパントテン酸
     for n in range(0, 18):
-        add(n, youso(n, num), inn)
+        add(n, youso(n, num), inn * r)
 
         # ビタミンＡ
     for j in range(18, 24):
-        add(18, youso(j, num), inn)
+        add(18, youso(j, num), inn * r)
 
     # ビタミンE
     for j in range(24, 28):
-        add(19, youso(j, num), inn)
+        add(19, youso(j, num), inn * r)
 
     # 食塩相当量
-    add(20, youso(28, num), inn)
+    add(20, youso(28, num), inn * r)
 
 
-def out_out(ff, ww):
+def out_out(ff, ww, qq):
+    hyoujiweight.clear()
+    hyoujiweight.append("(量)")
     for i in range(0, 21):
         eiy[i] = 0.0
         hyo[i] = 0.0
@@ -116,22 +203,39 @@ def out_out(ff, ww):
     for j in range(0, 20):
         f = ff[j]
         w = ww[j]
-        out(f, w)
+        q = qq[j]
+        out(f, w, q)
     for p in range(0, 21):
         hyouji(p)
     for i in range(0, 21):
         par[i] = round(par[i], 1)
         hyo[i] = round(hyo[i], 1)
 
-
+hello = ["ようこそ", "食品名と量を入力してください"]
 @login_required
 def indexview(request):
+    user = request.user.id
+    p = Profile.objects.get(user=user)
+    if p.checkryo == None:
+        p.checkryo = ["単位", "g", "個"]
+        for i in range(0, 18):
+            p.checkryo.append("g")
+    if p.checkedfood == None:
+        p.checkedfood = ["食品", "ぶた　ばら", "じゃがいも"]
+    if p.checkweight == None:
+        p.checkweight = ["量", "200", "1.5"]
+        hello[0] = "はじめまして"
+        hello[1] = "例にならい入力して栄養価を計算してみましょう。"
+    else:
+        hello[1] = "食品名と量を入力してください"
+    p.save()
     templates = loader.get_template("index.html")
-    contexts = {}
+    contexts = {"hello": hello}
     return HttpResponse(templates.render(contexts, request))
 
 
 def list_indexview(request):
+    hello[1] = "リストから追加出来たら量を入力しましょう"
     user = request.user.id
     p = Profile.objects.get(user=user)
     templates = loader.get_template("index.html")
@@ -140,11 +244,8 @@ def list_indexview(request):
     for d in checked_food:
         checklist.append(d)
     p.checkedfood = checklist
-    """
-    for r in range(0, 20):
-        checkedfood.append("")
-    """
-    contexts = {}
+
+    contexts = {"hello": hello}
     p.save()
     return HttpResponse(templates.render(contexts, request))
 
@@ -157,11 +258,10 @@ def reset_view(request):
     p.checkweight = ["量"]
     p.foodname = ["食品"]
     p.foodweight = ["量"]
-    """
+    p.checkryo = ["単位"]
     for i in range(0, 20):
-        checkedfood.append("")
-    """
-    contex = {}
+        p.checkryo.append("g")
+    contex = {"hello": hello}
     p.save()
     return HttpResponse(templat.render(contex, request))
 
@@ -171,34 +271,29 @@ def listview(request):
     p = Profile.objects.get(user=user)
     p.checkedfood = ["食品"]
     p.checkweight = ["量"]
+    p.checkryo = ["単位"]
     foodfood = request.POST.getlist("food")
     weightweight = request.POST.getlist("weight")
+    ryoryo = request.POST.getlist("ryo")
     for uh in foodfood:
         if uh == "":
             pass
-            """
-            p.checkedfood.append(" ")
-            """
         else:
             p.checkedfood.append(uh)
-    """
-    for ug in range(0, 20):
-        p.checkedfood.append("")
-    """
     for uw in weightweight:
         if uw == "":
             pass
-            """
-            p.checkweight.append(" ")
-            """
         else:
             p.checkweight.append(uw)
-    """
-    for uq in range(0, 20):
-        p.checkweight.append("")
-    """
+    for i in ryoryo:
+        p.checkryo.append(i)
     template = loader.get_template("list.html")
-    context = {"list": lists_food}
+    context = {"list": lists_food,
+               "lists_0": lists_0,
+               "lists_1": lists_1,
+               "lists_2": lists_2,
+               "range": ranran,
+               }
     p.save()
     return HttpResponse(template.render(context, request))
 
@@ -216,16 +311,20 @@ def outputview(request):
     user = request.user.id
     p = Profile.objects.get(user=user)
     food_input = request.POST.getlist("food")
+    weight_input = request.POST.getlist("weight")
+    ryo_input = request.POST.getlist("ryo")
     p.checkedfood = ["食品"]
     p.checkweight = ["量"]
     p.foodname = ["食品"]
     p.foodweight = ["量"]
+    p.checkryo = ["単位"]
     for i in food_input:
         try:
             num = lists_food.index(i)
         except ValueError:
             if i == "":
-                pass
+                p.foodname.append(" ")
+                p.checkedfood.append((" "))
             else:
                 p.foodname.append("???")
                 p.checkedfood.append(i)
@@ -233,8 +332,11 @@ def outputview(request):
             p.checkedfood.append(i)
             ii = i.replace("\u3000", " ")
             p.foodname.append(ii)
-    weight_input = request.POST.getlist("weight")
+
     for i in weight_input:
+        if i == "":
+            p.foodweight.append(" ")
+            p.checkweight.append(" ")
         try:
             inn = int(i)
         except ValueError:
@@ -242,13 +344,25 @@ def outputview(request):
                 pass
             else:
                 p.foodweight.append("???")
+
                 p.checkweight.append(i)
         else:
             p.checkweight.append(i)
             p.foodweight.append(i)
-    out_out(food_input, weight_input)
+
+    for i in ryo_input:
+        if i == "":
+            pass
+        else:
+            p.checkryo.append(i)
+
+    out_out(food_input, weight_input, ryo_input)
     template = loader.get_template("output.html")
     context = {"range": ran,
+               "food": food_input,
+               "weight": weight_input,
+               "ryo": ryo_input,
+               "hyouji": hyoujiweight,
                "h0": hyo[0],
                "h1": hyo[1],
                "h2": hyo[2],

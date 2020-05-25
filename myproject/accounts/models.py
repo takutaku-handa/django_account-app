@@ -36,6 +36,13 @@ class Profile(models.Model):
         null=True,
     )
 
+    checkryo = ListCharField(
+        base_field=CharField(max_length=10, null=True, default="g"),
+        size=20,
+        max_length=20 * 11,
+        null=True,
+    )
+
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
