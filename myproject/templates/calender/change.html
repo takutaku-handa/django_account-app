@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>トップ</title>
+</head>
+<body link="blue" vlink="blue" alink="blue">
+{% load static %}
+<style>
+    p {
+        border-bottom: thin solid white;
+        font-size: 80%;
+    }
+
+    td {
+        font-weight: bold;
+    }
+
+    table, a {
+        padding: 0;
+        margin: 0em;
+    }
+
+    button {
+        font-weight: bold;
+        color: black;
+        width: 8.2em;
+        height: 2.4em;
+        padding: 0;
+        margin: 0;
+        box-shadow: 2px 2px 2px 1px #999999;
+    }
+
+    button:active {
+        -webkit-transform: translateY(2px);
+        transform: translateY(2px); /*沈むように*/
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+        background-image: linear-gradient(#EEEEEE 0%, #EEEEEE 100%);
+    }
+
+    .delete {
+        height: 1.8em;
+        width: 1.8em;
+        padding: 0;
+        border-style: none;
+        background: transparent;
+        box-shadow: 0px 0px 0px 0px #999999;
+    }
+
+    h1.top {
+        position: fixed;
+        background-color: white;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 51px;
+        padding: 8px 0 5px 0;
+        border-bottom: 1px solid black;
+        margin: 0;
+        box-shadow: 0px 3px 4px #999999;
+    }
+
+    a#hov {
+        color: #222222;
+    }
+
+    img#rad {
+        border: 1px solid white;
+    }
+
+    img#rad:hover {
+        color: #222222;
+        box-shadow: 1px 2px 2px #999999;
+        border: 1px solid #EEEEEE;
+        border-radius: 11px;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    img#bb {
+        border: 1px solid white;
+    }
+
+    img#bb:hover {
+        box-shadow: 3px 4px 4px #999999;
+        border: 1px solid #CCCCCC;
+        border-radius: 9px;
+    }
+
+</style>
+
+<h1 class="top">
+    <a href="{% url 'week' %}"
+       style="color: black; font-size: 0.6em; text-decoration: none; margin-left: 1em">
+        <img src="{% static 'recipe/yakisoba.jpg'%}" style="height: 40px; width: 160px; margin-right: 50px">
+    </a>
+    <a href="{% url 'index' %}" id="hov"
+       style="color: black; font-size: 0.6em; text-decoration: none; margin-left: 1em">
+        <img id="rad" src="{% static 'recipe/bar.jpg'%}" style="height: 50px; width: 100px">
+    </a>
+    <a href="{% url 'recipe_list' %}" id="hov"
+       style="color: black; font-size: 0.6em; text-decoration: none; margin-left: 1em">
+        <img id="rad" src="{% static 'recipe/scope.jpg'%}" style="height: 50px; width: 100px">
+    </a>
+    <a href="{% url 'recipe' %}" id="hov"
+       style="color: black; font-size: 0.6em; text-decoration: none; margin-left: 1em">
+        <img id="rad" src="{% static 'recipe/recipe.jpg'%}" style="height: 50px; width: 100px">
+    </a>
+    <a href="{% url 'out' %}"
+       style="color: black; font-size: 0.6em; text-decoration: none;margin-left: 400px; margin-right: 20px">
+        <img src="{% static 'recipe/user.svg'%}" style="height: 30px; width: 60px">
+    </a>
+</h1>
+
+<div style="float: left; margin-top: 6em">
+    <form method="get" action="{% url 'week' %}">
+        {% csrf_token %}
+
+        <a href="{% url 'week' week_previous.year week_previous.month  week_previous.day %}">前週</a>
+        <span>{{ week_first | date:"Y年m月d日" }}〜{{ week_last | date:"Y年m月d日" }}</span>
+        <a href="{% url 'week' week_next.year week_next.month  week_next.day %}">次週</a>
+        <a href="{% url 'week' %}" style="font-size: 2em">今週</a>
+        <table cellspacing="0" cellpadding="1" bordercolor="gray" , frame="hsides" , rules="all" ,
+               style="margin-bottom: 2em">
+            <thead>
+
+            <tr>
+                <td></td>
+                {% for w in week_names %}
+                {% if w == "日" %}
+                <th bgcolor="#a52a2a" style="text-align: center; color: white">{{ w }}</th>
+                {% elif w == "土" %}
+                <th bgcolor="#87ceeb" style="text-align: center; color: white">{{ w }}</th>
+                {% else %}
+                <th bgcolor="" style="text-align: center; color: black">{{ w }}</th>
+                {% endif %}
+                {% endfor %}
+                <td></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+
+                <td></td>
+                {% for day in week_days %}
+                {% if now == day %}
+                <td bgcolor="#adff2f" , width="120" , height="40" ,
+                    style="text-align: center; border: 2px solid black">
+                    {% if day == d %}
+                    <button type="submit"
+                            formaction="{% url 'change' week_first.year week_first.month  week_first.day %}"
+                            name="day"
+                            value="{{day}}" style="background-color: gold">
+                        {% else %}
+                        <button type="submit"
+                                formaction="{% url 'change' week_first.year week_first.month  week_first.day %}"
+                                name="day"
+                                value="{{day}}">
+                            {% endif %}
+
+                            {% elif day == d %}
+
+                <td bgcolor="#f5f5f5" , width="120" , height="40" ,
+                    style="text-align: center; border: 2px solid mediumvioletred">
+                    <button type="submit"
+                            formaction="{% url 'change' week_first.year week_first.month  week_first.day %}"
+                            name="day"
+                            value="{{day}}" style="background-color: gold">
+
+                        {% else %}
+
+                <td bgcolor="#f5f5f5" width="120" , height="40" ,
+                    style="text-align: center; border: 2px solid black">
+                    <button type="submit"
+                            formaction="{% url 'change' week_first.year week_first.month  week_first.day %}"
+                            name="day"
+                            value="{{day}}">
+
+                        {% endif %}
+
+                        {{ day | date:"m/d" }}
+                    </button>
+                </td>
+                {% endfor %}
+                <td></td>
+
+            </tr>
+            {% for name, time in food.items %}
+            <tr>
+                <td height="45">{{name}}</td>
+                {% for day in time %}
+                <td>
+                    {% for i in day %}
+                    {% for list in Recipe %}
+                    {% if list.name == i %}
+                    {% if i|length <= 8 %}
+                    <p><a href='{% url "detail" list.pk %}'>{{i}}</a></p>
+                    {% else %}
+                    <p>
+                        <a href='{% url "detail" list.pk %}'>{{i.0}}{{i.1}}{{i.2}}{{i.3}}{{i.4}}{{i.5}}{{i.6}}{{i.7}}…</a>
+                    </p>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </form>
+</div>
+
+
+{% if tt == "ok" %}
+<div style="float: left; margin: 10em 0em 0em 2em; border: 2px solid mediumvioletred">
+    <form>
+        <p style="border-bottom: 1px solid mediumvioletred; background-color: antiquewhite;
+         text-align: center; margin: 0px">
+            投稿はここから
+        </p>
+    </form>
+    <h1 style="border-bottom: 2px solid mediumvioletred; margin: 2px 2px 0px 2px; background-color: gold">{{d}}</h1>
+    <form action="{%url 'calender_create'%}" method="post">
+        {% csrf_token %}
+
+        <input type="image" src="{% static 'recipe/send.svg'%}"
+               style="height: 35px; width: 35px; display: block; margin-left: auto; margin-right: 10px">
+        <div style="float: top; margin-top: 0em; font-size: 170%">
+            <input type="radio" name="time" value="1" checked="checked">朝
+            <input type="radio" name="time" value="2">昼
+            <input type="radio" name="time" value="3">夜
+            <input type="radio" name="time" value="4">間食
+        </div>
+        <div style="float: top">
+            <select name="name" style="font-size: 1.2em; margin: 5px; height: 2em; width: 10em">
+                <option disabled selected>レシピ集から選ぶ</option>
+                {% for name in list %}
+                <option style="font-weight: bold">{{name}}</option>
+                {% endfor %}
+                {% for name in rist %}
+                {% if name not in list %}
+                <option style="color: red">{{name}}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+            <select name="ryo" style="font-size: 1em; margin: 3px; height: 2em; width: 4em">
+                <option value=0.5>半分（0.5倍）</option>
+                <option value=0.75>少なめ（0.75倍）</option>
+                <option value=1.0 selected>普通（1.0倍）</option>
+                <option value=1.25>少し多め（1.25倍）</option>
+                <option value=1.5>多め（1.5倍）</option>
+                <option value=2.0>二人前（2.0倍）</option>
+            </select>
+        </div>
+        <input type="hidden" name='day' value="{{d}}">
+    </form>
+</div>
+
+{% if foods_list.0 or foods_list.1 or foods_list.2 or foods_list.3 %}
+<div style="clear: both">
+    <h3 style="border-bottom: 1px solid black">{{d}}の詳細</h3>
+</div>
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name='day' value="{{d}}">
+    <div style="float: left">
+        {% for i in foods_list.0 %}
+        {% for list in MyCalender %}
+        {% if list.name.pk == i and list.time == 1 %}
+        {% for r in Recipe %}
+        {% if r.pk == i %}
+        {% if r.name|length <= 8 %}
+        <p style="font-size: 20px; margin: 10px">
+            <button class="delete" type="submit" formaction="{% url 'calender_delete' %}" name="pk" value="{{list.pk}}">
+                <img id="bb" style="height: 19px; width: 19px" src="{% static 'recipe/trash2.svg' %}" alt="My image"/>
+            </button>
+            <a href='{% url "calender_update" list.pk %}' style="text-decoration: none">
+                <img id="bb" style="height: 17px; width: 17px" src="{% static 'recipe/pen.svg' %}" alt="My image"/>
+            </a>{{r.name}}
+        </p>
+        {% else %}
+        <p style="font-size: 20px; margin: 10px">
+            <button class="delete" type="submit" formaction="{% url 'calender_delete' %}" name="pk" value="{{list.pk}}">
+                <img id="bb" style="height: 19px; width: 19px" src="{% static 'recipe/trash2.svg' %}" alt="My image"/>
+            </button>
+            <a href='{% url "calender_update" list.pk %}' style="text-decoration: none">
+                <img id="bb" style="height: 19px; width: 19px" src="{% static 'recipe/pen.svg' %}" alt="My image"/>
+            </a>{{r.name.0}}{{r.name.1}}{{r.name.2}}{{r.name.3}}{{r.name.4}}{{r.name.5}}{{r.name.6}}{{r.name.7}}…
+        </p>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+        <p>------------------------------------------</p>
+
+        {% for i in foods_list.1 %}
+        {% for list in MyCalender %}
+        {% if list.name.pk == i and list.time == 2 %}
+        {% for r in Recipe %}
+        {% if r.pk == i %}
+        {% if r.name|length <= 8 %}
+        <p style="font-size: 20px; margin: 10px">
+            <button class="delete" type="submit" formaction="{% url 'calender_delete' %}" name="pk" value="{{list.pk}}">
+                <img id="bb" style="height: 19px; width: 19px" src="{% static 'recipe/trash2.svg' %}" alt="My image"/>
+            </button>
+            <a href='{% url "calender_update" list.pk %}' style="text-decoration: none">
+                <img id="bb" style="height: 17px; width: 17px" src="{% static 'recipe/pen.svg' %}" alt="My image"/>
+            </a>{{r.name}}
+        </p>
+        {% else %}
+        <p style="font-size: 20px; margin: 10px">
+            <button class="delete" type="submit" formaction="{% url 'calender_delete' %}" name="pk" value="{{list.pk}}">
+                <img id="bb" style="height: 19px; width: 19px" src="{% static 'recipe/trash2.svg' %}" alt="My image"/>
+            </button>
+            <a href='{% url "calender_update" list.pk %}' style="text-decoration: none">
+                <img id="bb" style="height: 19px; width: 19px" src="{% static 'recipe/pen.svg' %}" alt="My image"/>
+            </a>{{r.name.0}}{{r.name.1}}{{r.name.2}}{{r.name.3}}{{r.name.4}}{{r.name.5}}{{r.name.6}}{{r.name.7}}…
+        </p>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+        <p>------------------------------------------</p>
+
+        {% for i in foods_list.2 %}
+        {% for list in MyCalender %}
+        {% if list.name.pk == i and list.time == 3 %}
+        {% for r in Recipe %}
+        {% if r.pk == i %}
+        {% if r.name|length <= 8 %}
+        <p style="font-size: 20px; margin: 10px">
+            <button class="delete" type="submit" formaction="{% url 'calender_delete' %}" name="pk" value="{{list.pk}}">
+                <img id="bb" style="height: 19px; width: 19px" src="{% static 'recipe/trash2.svg' %}" alt="My image"/>
+            </button>
+            <a href='{% url "calender_update" list.pk %}' style="text-decoration: none">
+                <img id="bb" style="height: 17px; width: 17px" src="{% static 'recipe/pen.svg' %}" alt="My image"/>
+            </a>{{r.name}}
+        </p>
+        {% else %}
+        <p style="font-size: 20px; margin: 10px">
+            <button class="delete" type="submit" formaction="{% url 'calender_delete' %}" name="pk" value="{{list.pk}}">
+                <img id="bb" style="height: 19px; width: 19px" src="{% static 'recipe/trash2.svg' %}" alt="My image"/>
+            </button>
+            <a href='{% url "calender_update" list.pk %}' style="text-decoration: none">
+                <img id="bb" style="height: 19px; width: 19px" src="{% static 'recipe/pen.svg' %}" alt="My image"/>
+            </a>{{r.name.0}}{{r.name.1}}{{r.name.2}}{{r.name.3}}{{r.name.4}}{{r.name.5}}{{r.name.6}}{{r.name.7}}…
+        </p>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+        <p>------------------------------------------</p>
+
+        {% for i in foods_list.3 %}
+        {% for list in MyCalender %}
+        {% if list.name.pk == i and list.time == 4 %}
+        {% for r in Recipe %}
+        {% if r.pk == i %}
+        {% if r.name|length <= 8 %}
+        <p style="font-size: 20px; margin: 10px">
+            <button class="delete" type="submit" formaction="{% url 'calender_delete' %}" name="pk" value="{{list.pk}}">
+                <img id="bb" style="height: 19px; width: 19px" src="{% static 'recipe/trash2.svg' %}" alt="My image"/>
+            </button>
+            <a href='{% url "calender_update" list.pk %}' style="text-decoration: none">
+                <img id="bb" style="height: 17px; width: 17px" src="{% static 'recipe/pen.svg' %}" alt="My image"/>
+            </a>{{r.name}}
+        </p>
+        {% else %}
+        <p style="font-size: 20px; margin: 10px">
+            <button class="delete" type="submit" formaction="{% url 'calender_delete' %}" name="pk" value="{{list.pk}}">
+                <img id="bb" style="height: 19px; width: 19px" src="{% static 'recipe/trash2.svg' %}" alt="My image"/>
+            </button>
+            <a href='{% url "calender_update" list.pk %}' style="text-decoration: none">
+                <img id="bb" style="height: 19px; width: 19px" src="{% static 'recipe/pen.svg' %}" alt="My image"/>
+            </a>{{r.name.0}}{{r.name.1}}{{r.name.2}}{{r.name.3}}{{r.name.4}}{{r.name.5}}{{r.name.6}}{{r.name.7}}…
+        </p>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+</form>
+<div style="float: left;">
+    {% for r in ryo_list %}
+    {% for rr in r %}
+    {% if rr == 1.0 %}
+    <p style="font-size: 20px; margin: 10px">&nbsp;</p>
+    {% else %}
+    <p style="font-size: 20px; margin: 10px">x{{rr}}</p>
+    {% endif %}
+    {% endfor %}
+    <p>&nbsp;</p>
+    {% endfor %}
+</div>
+
+<div style="float: left; margin-top: 0px; border-left: 1px solid black; margin-left: 20px">
+    <p style="font-size: 120%; margin-top: 0px"></p>
+    <p style="font-size: 110%; margin-top: 0px"></p>
+    {% for e in eiyo %}
+    <p style="margin: 2px">{{e}}</p>
+    {% endfor %}
+</div>
+<div style="float: left">
+    <img src="{% url 'img2' %}" alt="グラフ">
+</div>
+<div style="float: left; margin-left: 20px">
+    <p style="font-size: 9em; font-family: 'Comic Sans MS'; color: crimson;
+ height: 1.15em; padding: 20px; border-bottom: 8px solid crimson">{{h}}</p>
+</div>
+{% endif %}
+{% endif %}
+</body>
+</html>

@@ -12,5 +12,5 @@ urlpatterns = [
     path('list_index/', views.list_indexview, name="list_index"),
     path('reset/', views.reset_view, name='reset'),
     path('out/', views.outview, name='out'),
-
+    path('output/plot/', views.get_svg, name='img'),
 ]

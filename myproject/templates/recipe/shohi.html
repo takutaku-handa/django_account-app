@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>表示</title>
+</head>
+<body>
+<a href='{% url "recipe" %}'>戻る</a>
+{% for i in user.profile.foodname %}
+{{i}}
+{% endfor %}
+{% for j in user.profile.foodweight %}
+{{j}}
+{% endfor %}
+<h1>【計算結果】</h1>
+<p>------------------------------------------------------------------------------------------</p>
+{% for i, j in h.items %}
+<p>★
+    {% for list in Recipe0 %}
+    {% if list.name in i %}
+    <a href='{% url "detail" list.pk %}'> < {{list.name}} > </a>
+    {% endif %}
+    {% endfor %}
+    --------＞　不足分
+    {% for j1, j2 in j.items %}
+    <span>( {{j1}} x {{j2}}g )</span>
+    {% endfor %}
+</p>
+{% endfor %}
+<p>------------------------------------------------------------------------------------------</p>
+
+<h2>{{user.username}}さんのレシピ</h2>
+{% for list in Recipe %}
+<li><a href='{% url "detail" list.pk %}'>{{list.name}}</a></li>
+{% endfor %}
+
+<h2>みんなのレシピ</h2>
+{% for list in Recipe2 %}
+<ul>
+    <li><a href='{% url "detail" list.pk %}'>{{list.name}}</a></li>
+</ul>
+{% endfor %}
+</body>
+</html>

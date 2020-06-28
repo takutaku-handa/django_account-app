@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>確認画面</title>
+</head>
+<body>
+<form method="post">{% csrf_token %}
+
+<p>本当に "{{ object }}" を削除しますか?</p>
+
+<input type="submit" value="削除する">
+
+</form>
+</body>
+</html>

@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
     <meta charset="utf-8"/>
     <title>トップページ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+{% load static %}
 <style>
-    h1 {
-        color: white;
-        font-size: 300%;
-        background: orange;
-        font-weight: bold;
-        margin-bottom: 0em;
-    }
-
     h3 {
         margin-bottom: 0.6em;
     }
 
     * {
         text-align: center;
+    }
+
+    h1 {
+        text-align: initial;
     }
 
     .link_button {
@@ -57,6 +54,7 @@
 
     button#list {
         display: block;
+        border: 1px solid black;
         width: 10em;
         height: 2em;
         margin-left: auto;
@@ -84,27 +82,67 @@
         background: darkgreen;
     }
 
-    #u {
-        margin-bottom: 0.2em;
-        margin-top: 1 em;
-        color: crimson;
-        font-weight: bold;
-        font-size: 1.2em;
+    h1.top {
+        position: fixed;
+        background-color: white;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 51px;
+        padding: 8px 0 5px 0;
+        border-bottom: 1px solid black;
+        margin: 0;
+        box-shadow: 0px 3px 4px #999999;
     }
 
-    h4#i {
-        margin-top: 0.2em;
+    a#hov {
+        color: #222222;
+        text-shadow: 3px 3px 3px darkgrey;
+    }
+
+    a#hov:hover {
+        color: #222222;
+        text-shadow: 1px 1px 1px #999999;
+    }
+
+    img#rad {
+        border: 1px solid white;
+    }
+
+    img#rad:hover {
+        color: #222222;
+        box-shadow: 1px 2px 2px #999999;
+        border: 1px solid #EEEEEE;
+        border-radius: 11px;
     }
 
 </style>
+<h1 class="top">
+    <a href="{% url 'week' %}"
+       style="color: black; font-size: 0.6em; text-decoration: none; margin-left: 1em">
+        <img src="{% static 'recipe/yakisoba.jpg'%}" style="height: 40px; width: 160px; margin-right: 50px">
+    </a>
+    <a href="{% url 'index' %}" id="hov"
+       style="color: black; font-size: 0.6em; text-decoration: none; margin-left: 1em">
+        <img id="rad" src="{% static 'recipe/bar.jpg'%}" style="height: 50px; width: 100px">
+    </a>
+    <a href="{% url 'recipe_list' %}" id="hov"
+       style="color: black; font-size: 0.6em; text-decoration: none; margin-left: 1em">
+        <img id="rad" src="{% static 'recipe/scope.jpg'%}" style="height: 50px; width: 100px">
+    </a>
+    <a href="{% url 'recipe' %}" id="hov"
+       style="color: black; font-size: 0.6em; text-decoration: none; margin-left: 1em">
+        <img id="rad" src="{% static 'recipe/recipe.jpg'%}" style="height: 50px; width: 100px">
+    </a>
+    <a href="{% url 'out' %}"
+       style="color: black; font-size: 0.6em; text-decoration: none;margin-left: 400px; margin-right: 20px">
+        <img src="{% static 'recipe/user.svg'%}" style="height: 30px; width: 60px">
+    </a>
+</h1>
 
-<h1>トップページ</h1></p>
-<h3>{{hello.0}}、{{user.profile.user}}さん</h3>
-
-<h4 id="u">{{hello.1}}</h4>
-<h4 id="i">(最大２０品目）</h4>
-<a id="reset" href="{% url 'reset' %}">リセット</a>
-
+<div style="margin-top: 100px">
+    <a id="reset" href="{% url 'reset' %}">リセット</a>
+</div>
 
 <form method="post" action="{% url 'output' %}" , id='post'>
 
@@ -112,25 +150,26 @@
 
     {% csrf_token %}
     <div>
-        ①<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.1 }}> x
-        <input id='text2' type="text" name="weight" value={{user.profile.checkweight.1}}>
+        ①<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.0 }}> x
+        <input id='text2' type="text" name="weight" value={{user.profile.checkweight.0}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
-            <option>{{user.profile.checkryo.1}}</option>
+            <option>{{user.profile.checkryo.0}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
             <option>cc</option>
             <option>g</option>
         </select>
-        ②<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.2 }}> x
-        <input id='text2' type="text" name="weight" value={{user.profile.checkweight.2}}>
+        ②<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.1 }}> x
+        <input id='text2' type="text" name="weight" value={{user.profile.checkweight.1}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
-            <option>{{user.profile.checkryo.2}}</option>
+            <option>{{user.profile.checkryo.1}}</option>
             <option value="個">個</option>
-            <option value="枚">枚</option>
             <option value="玉">玉</option>
+            <option value="枚">枚</option>
             <option value="合">合</option>
             <option value="尾">尾</option>
             <option value="切">切</option>
@@ -139,12 +178,27 @@
         </select>
     </div>
     <div>
-        ➂<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.3 }}> x
+        ➂<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.2 }}> x
+        <input id='text2' type="text" name="weight" value={{user.profile.checkweight.2}}>
+        <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
+            <option>{{user.profile.checkryo.2}}</option>
+            <option>個</option>
+            <option>玉</option>
+            <option>枚</option>
+            <option>合</option>
+            <option>尾</option>
+            <option>切</option>
+            <option>cc</option>
+            <option>g</option>
+        </select>
+
+        ④<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.3 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.3}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.3}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -152,12 +206,15 @@
             <option>g</option>
         </select>
 
-        ④<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.4 }}> x
+    </div>
+    <div>
+        ⑤<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.4 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.4}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.4}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -165,14 +222,13 @@
             <option>g</option>
         </select>
 
-    </div>
-    <div>
-        ⑤<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.5 }}> x
+        ⑥<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.5 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.5}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.5}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -180,12 +236,15 @@
             <option>g</option>
         </select>
 
-        ⑥<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.6 }}> x
+    </div>
+    <div>
+        ⑦<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.6 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.6}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.6}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -193,14 +252,13 @@
             <option>g</option>
         </select>
 
-    </div>
-    <div>
-        ⑦<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.7 }}> x
+        ⑧<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.7 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.7}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.7}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -208,12 +266,15 @@
             <option>g</option>
         </select>
 
-        ⑧<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.8 }}> x
+    </div>
+    <div>
+        ⑨<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.8 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.8}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.8}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -221,14 +282,13 @@
             <option>g</option>
         </select>
 
-    </div>
-    <div>
-        ⑨<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.9 }}> x
+        ⑩<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.9 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.9}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.9}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -236,38 +296,44 @@
             <option>g</option>
         </select>
 
-        ⑩<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.10 }}> x
+    <div>
+        ⑪<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.10 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.10}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.10}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
             <option>cc</option>
             <option>g</option>
         </select>
-    <div>
-        ⑪<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.11 }}> x
+
+        ⑫<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.11 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.11}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.11}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
             <option>cc</option>
             <option>g</option>
         </select>
-
-        ⑫<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.12 }}> x
+        <!--
+    </div>
+    <div>
+        ⑬<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.12 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.12}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.12}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -275,14 +341,13 @@
             <option>g</option>
         </select>
 
-    </div>
-    <div>
-        ⑬<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.13 }}> x
+        ⑭<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.13 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.13}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.13}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -290,12 +355,15 @@
             <option>g</option>
         </select>
 
-        ⑭<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.14 }}> x
+    </div>
+    <div>
+        ⑮<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.14 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.14}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.14}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -303,14 +371,13 @@
             <option>g</option>
         </select>
 
-    </div>
-    <div>
-        ⑮<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.15 }}> x
+        ⑯<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.15 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.15}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.15}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -318,12 +385,15 @@
             <option>g</option>
         </select>
 
-        ⑯<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.16 }}> x
+    </div>
+    <div>
+        ⑰<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.16 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.16}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.16}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -331,27 +401,13 @@
             <option>g</option>
         </select>
 
-    </div>
-    <div>
-        ⑰<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.17 }}> x
+        ⑱<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.17 }}> x
         <input id='text2' type="text" name="weight" value={{user.profile.checkweight.17}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
             <option>{{user.profile.checkryo.17}}</option>
             <option>個</option>
             <option>玉</option>
-            <option>合</option>
-            <option>尾</option>
-            <option>切</option>
-            <option>cc</option>
-            <option>g</option>
-        </select>
-
-        ⑱<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.18 }}> x
-        <input id='text2' type="text" name="weight" value={{user.profile.checkweight.18}}>
-        <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
-            <option>{{user.profile.checkryo.18}}</option>
-            <option>個</option>
-            <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -361,12 +417,13 @@
 
     </div>
     <div>
-        ⑲<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.19 }}> x
-        <input id='text2' type="text" name="weight" value={{user.profile.checkweight.19}}>
+        ⑲<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.18 }}> x
+        <input id='text2' type="text" name="weight" value={{user.profile.checkweight.18}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
-            <option>{{user.profile.checkryo.19}}</option>
+            <option>{{user.profile.checkryo.18}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -374,12 +431,13 @@
             <option>g</option>
         </select>
 
-        ⑳<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.20 }}> x
-        <input id='text2' type="text" name="weight" value={{user.profile.checkweight.20}}>
+        ⑳<input id='text1' type="text" name="food" value={{ user.profile.checkedfood.19 }}> x
+        <input id='text2' type="text" name="weight" value={{user.profile.checkweight.19}}>
         <select name="ryo" style="width:2.3em; height: 2em; font-size: larger">
-            <option>{{user.profile.checkryo.20}}</option>
+            <option>{{user.profile.checkryo.19}}</option>
             <option>個</option>
             <option>玉</option>
+            <option>枚</option>
             <option>合</option>
             <option>尾</option>
             <option>切</option>
@@ -388,10 +446,9 @@
         </select>
     </div>
 
-
-    <input class="link_button" id="submit" type="submit" , value='栄養を表示する'>
+-->
+        <input class="link_button" id="submit" type="submit" , value='栄養を表示する'>
 
 </form>
-<a class="link_button" id='logout' href="{% url 'out' %}">ログアウト</a>
 </body>
 </html>

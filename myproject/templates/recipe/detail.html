@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>詳細</title>
+</head>
+<body>
+{% if object.user == user or object.pub %}
+
+<p>レシピの作成者：{{object.user}}</p>
+<p>料理名：【{{object.name}}】
+    {% if object.user == user %}
+    <a href='{% url "update" object.pk %}'>編集へ</a> <a href='{% url "delete" object.pk %}'>削除へ</a></p>
+{% endif %}
+    <div style="float: left">
+        {% for i in object.ingredient %}
+        <p>{{ i }}</p>
+        {% endfor %}
+    </div>
+    <div style="float: left; font-weight: bold; text-align: right; margin-left: 1em">
+        {% for i in object.weight %}
+        <p>{{ i }}g</p>
+        {% endfor %}
+    </div>
+    <div style="float: left; text-align: right; margin-left: 1em">
+        <p></p>
+        {% for i in object.hyojiweight %}
+        <p>({{ i }}</p>
+        {% endfor %}
+    </div>
+    <div style="float: left; text-align: right">
+        {% for i in object.hyojiryo %}
+        <p>{{ i }})</p>
+        {% endfor %}
+    </div>
+<div style="clear: both; margin-left: 0em; padding: 0.5em; width: 16em; border: medium solid black">{{object.recipe}}</div>
+
+{% else %}
+<h1>あなたは見ることができません</h1>
+{% endif %}
+</body>
+</html>

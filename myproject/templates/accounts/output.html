@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>食品成分</title>
+</head>
+<body>
+<style>
+
+    a#con {
+        font-size: 3em;
+        display: block;
+        margin-left: 2em;
+        margin-top: 2em;
+        margin-bottom: 1em;
+        width: 5em;
+        height: 1.2em;
+        text-align: center;
+        font-weight: bold; /*太字に*/
+        background: orange; /*背景を水色に*/
+        color: white; /*文字を白に*/
+        padding: 5px 10px; /*内側の余白*/
+        border-radius: 20px; /*角を丸くする*/
+        font-family: 'Avenir', 'Arial'; /*フォントをいい感じに*/
+    }
+
+    a#fin {
+        font-size: 200%;
+        display: block;
+        margin-right: auto;
+        width: 5em;
+        height: 2em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .name {
+        text-align: center;
+        float: left;
+        margin-left: 2em;
+    }
+
+    .tan {
+        float: left;
+        margin-left: 0;
+    }
+
+    .weight {
+        float: left;
+    }
+
+    .par {
+        float: left;
+        text-align: right;
+    }
+
+    p#t {
+        height: 1em;
+        margin-top: 0.1em;
+        font-size: 30px;
+        font-weight: bold;
+        border-bottom: thin solid seagreen;
+        margin-bottom: 0.4em;
+        height: 1.3em;
+        padding: 0em 0.1em 0em 0.1em;
+    }
+
+    p#ti {
+        height: 1em;
+        margin-top: 0.1em;
+        font-size: 30px;
+        border-bottom: thin solid seagreen;
+        margin-bottom: 0.4em;
+        height: 1.3em;
+        padding: 0em 0.3em 0em 0.3em;
+        text-align: right;
+    }
+
+    p#tt {
+        margin-top: 0.1em;
+        font-size: 30px;
+        border-bottom: thin solid seagreen;
+        margin-bottom: 0.4em;
+        height: 1.3em;
+        padding: 0em 0.5em 0em 0em;
+        text-align: right;
+    }
+
+
+    .topic {
+        text-align: center;
+        font-size: 30px;
+    }
+
+    #name {
+        font-size: 20px;
+        float: left;
+    }
+
+    #weight {
+        font-size: 20px;
+        float: left;
+        margin-left: 1em;
+    }
+
+    #num {
+        font-size: 20px;
+        color: black;
+        float: left;
+        width: 2em;
+        text-align: right;
+    }
+    img {
+        margin-top: 0.1em;
+    }
+
+</style>
+<a {{hidden}} href="{% url 'recipe_create' %}">レシピ登録する</a>
+<a {{hidden}} href='{% url "recipe" %}'>計算する</a>
+<a id='con' href="{% url 'index' %}">続ける</a>
+<img src="{% url 'img' %}" alt="グラフ">
+<div id="num">
+    {% for i in range %}
+    <p>{{ i }}.</p>
+    {% endfor %}
+</div>
+<div id="name">
+    <p style="color: #dc143c">(食品)</p>
+    {% for i in user.profile.foodname %}
+    <p style="color: #dc143c; font-weight: bold">{{i}}</p>
+    {% endfor %}
+</div>
+<div id="weight">
+    <p style="color: grey; text-align: right">(量)</p>
+    {% for i in hyouji %}
+    <p style="color: grey; text-align: right"><span style="color: green; font-weight: bold">{{ i }}</span>g</p>
+    {% endfor %}
+</div>
+
+<div class='name'>
+    <p id="t" class='topic'></p>
+    {% for n in name %}
+    <p id="t">{{n}}</p>
+    {% endfor %}
+</div>
+
+<div class='weight'>
+    <p id="ti" class='topic'></p>
+    {% for h in hyo %}
+    <p id="ti"> {{ h }} </p>
+    {% endfor %}
+</div>
+
+<div class="tan">
+    <p id="t" class='topic'></p>
+    {% for t in tanni %}
+    <p id="tt">{{t}}</p>
+    {% endfor %}
+</div>
+<!--
+<div class='par'>
+    <p id="t" class='topic' style=text-align:right;>(/day)</p>
+    {% for p in par %}
+    <p id="t"> {{ p }}%</p>
+    {% endfor %}
+
+</div>
+-->
+
+</body>
+</html>

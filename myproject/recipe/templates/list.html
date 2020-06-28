@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>レシピリスト</title>
+</head>
+<body>
+<h2>{{user.username}}さんのレシピ</h2>
+<p><a href='{% url "create" %}'>新規作成画面へ</a></p>
+{% for list in object_list %}
+{% if user == list.user %}
+<p>● <a href='{% url "detail" list.pk %}'>{{list.name}}</a></p>
+
+{% endif %}
+{% endfor %}
+
+<a href='{% url "recipe" %}'>計算</a>
+
+<h2>みんなのレシピ</h2>
+{% for list in object_list %}
+{% if list.pub %}
+
+<p>● <a href='{% url "detail" list.pk %}'>{{list.name}}</a></p>
+
+{% endif %}
+{% endfor %}
+</body>
+</html>

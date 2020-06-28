@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>編集</title>
+</head>
+<body>
+{% if object.user == user %}
+<form action='' method='post'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type='submit' value="適用する">
+    {% else %}
+    <h1>あなたは編集できません。</h1>
+    {% endif %}
+</form>
+</body>
+</html>

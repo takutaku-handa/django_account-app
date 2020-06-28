@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>日記</title>
+</head>
+<body>
+{% for i in object_list %}
+{% if i.user == user %}
+
+<p>●{{i.date}}の
+    {% if i.time == 1 %}
+    朝
+    {% elif i.time == 2 %}
+    昼
+    {% elif i.time == 3 %}
+    夜
+    {% else %}
+    間食
+    {% endif %}
+    に【{{i.name}}】を食べました。</p>
+
+{% endif %}
+{% endfor %}
+</body>
+</html>

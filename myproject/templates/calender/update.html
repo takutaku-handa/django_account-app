@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>update</title>
+</head>
+<style>
+    select {
+        font-size: 18px;
+        height: 40px;
+    }
+</style>
+<body>
+<form action="{% url 'calender_change' %}" method='post'>
+    {% csrf_token %}
+<div style="margin-left: 16px">
+    {{form}}
+</div>
+
+    <div style="float: top; margin-top: 0em"><span style="margin-right: 20px">　時間:</span>
+        <select name="time" style="font-size: 1em; margin: 5px; height: 2em; width: 15em">
+            <option style="font-weight: bold" value="{{mod.time}}" selected>
+                {% if mod.time == 1 %}
+                朝
+            </option>
+            <option style="font-weight: bold" value=2>昼</option>
+            <option style="font-weight: bold" value=3>夜</option>
+            <option style="font-weight: bold" value=4>間食</option>
+            {% elif mod.time == 2 %}
+            昼</option>
+            <option style="font-weight: bold" value=1>朝</option>
+            <option style="font-weight: bold" value=3>夜</option>
+            <option style="font-weight: bold" value=4>間食</option>
+            {% elif mod.time == 3 %}
+            夜</option>
+            <option style="font-weight: bold" value=1>朝</option>
+            <option style="font-weight: bold" value=2>昼</option>
+            <option style="font-weight: bold" value=4>間食</option>
+            {% else　%}
+            間食</option>
+            <option style="font-weight: bold" value=1>朝</option>
+            <option style="font-weight: bold" value=2>昼</option>
+            <option style="font-weight: bold" value=>夜</option>
+            {% endif %}
+        </select>
+    </div>
+
+    <div style="float: top"><span style="margin-right: 20px">料理名:</span>
+        <select name="name" style="font-size: 1em; margin: 5px; height: 2em; width: 15em">
+            <option style="font-weight: bold" selected>{{mod.name}}</option>
+            {% for name in l %}
+            <option style="font-weight: bold">{{name}}</option>
+            {% endfor %}
+            {% for name in r %}
+            {% if name not in l %}
+            <option style="color: red">{{name}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+
+    <div><span style="margin-right: 20px">　　量:</span>
+        <select name="ryo" style="font-size: 1em; margin: 3px; height: 2em; width: 15em">
+            <option value="{{mod.ryo}}">({{mod.ryo}}倍)</option>
+            <option value=0.5>半分（0.5倍）</option>
+            <option value=0.75>少なめ（0.75倍）</option>
+            <option value=1.0>普通（1.0倍）</option>
+            <option value=1.25>少し多め（1.25倍）</option>
+            <option value=1.5>多め（1.5倍）</option>
+            <option value=2.0>二人前（2.0倍）</option>
+        </select>
+    </div>
+    <input type="hidden" name="pk" value={{mod.pk}}>
+    <input type='submit' value="変更を適用する">
+</form>
+</body>
+</html>

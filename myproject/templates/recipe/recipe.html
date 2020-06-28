@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>レシピ</title>
+</head>
+{% load static %}
+<style>
+    h1.top {
+        position: fixed;
+        background-color: white;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 51px;
+        padding: 8px 0 5px 0;
+        border-bottom: 1px solid black;
+        margin: 0;
+        box-shadow: 0px 3px 4px #999999;
+    }
+
+    a#hov {
+        color: #222222;
+    }
+
+    img#rad {
+        border: 1px solid white;
+    }
+
+    img#rad:hover {
+        color: #222222;
+        box-shadow: 1px 2px 2px #999999;
+        border: 1px solid #EEEEEE;
+        border-radius: 11px;
+    }
+
+
+
+</style>
+<body>
+<h1 class="top">
+    <a href="{% url 'week' %}"
+       style="color: black; font-size: 0.6em; text-decoration: none; margin-left: 1em">
+        <img src="{% static 'recipe/yakisoba.jpg'%}" style="height: 40px; width: 160px; margin-right: 50px">
+    </a>
+    <a href="{% url 'index' %}" id="hov"
+       style="color: black; font-size: 0.6em; text-decoration: none; margin-left: 1em">
+        <img id="rad" src="{% static 'recipe/bar.jpg'%}" style="height: 50px; width: 100px">
+    </a>
+    <a href="{% url 'recipe_list' %}" id="hov"
+       style="color: black; font-size: 0.6em; text-decoration: none; margin-left: 1em">
+        <img id="rad" src="{% static 'recipe/scope.jpg'%}" style="height: 50px; width: 100px">
+    </a>
+    <a href="{% url 'recipe' %}" id="hov"
+       style="color: black; font-size: 0.6em; text-decoration: none; margin-left: 1em">
+        <img id="rad" src="{% static 'recipe/recipe.jpg'%}" style="height: 50px; width: 100px">
+    </a>
+    <a href="{% url 'out' %}"
+       style="color: black; font-size: 0.6em; text-decoration: none;margin-left: 400px; margin-right: 20px">
+        <img src="{% static 'recipe/user.svg'%}" style="height: 30px; width: 60px">
+    </a>
+</h1>
+<div style="margin-top: 80px">
+<form action="{% url 'allshohi' %}" , method="post">
+    {% csrf_token %}
+    <input type="submit" value="すべてのレシピから計算する">
+    <button formaction="{% url 'myshohi' %}">自分のレシピから計算する</button>
+    <p><input type="text" , name="food", value="{{user.profile.foodname.0}}"> x <input type="text" , name="weight", value="{{user.profile.foodweight.0}}">g</p>
+    <p><input type="text" , name="food", value="{{user.profile.foodname.1}}"> x <input type="text" , name="weight", value="{{user.profile.foodweight.1}}">g</p>
+    <p><input type="text" , name="food", value="{{user.profile.foodname.2}}"> x <input type="text" , name="weight", value="{{user.profile.foodweight.2}}">g</p>
+    <p><input type="text" , name="food", value="{{user.profile.foodname.3}}"> x <input type="text" , name="weight", value="{{user.profile.foodweight.3}}">g</p>
+    <p><input type="text" , name="food", value="{{user.profile.foodname.4}}"> x <input type="text" , name="weight", value="{{user.profile.foodweight.4}}">g</p>
+    <p><input type="text" , name="food", value="{{user.profile.foodname.5}}"> x <input type="text" , name="weight", value="{{user.profile.foodweight.5}}">g</p>
+    <p><input type="text" , name="food", value="{{user.profile.foodname.6}}"> x <input type="text" , name="weight", value="{{user.profile.foodweight.6}}">g</p>
+
+</form>
+</div>
+</body>
+</html>

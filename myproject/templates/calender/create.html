@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+</head>
+<body>
+
+<h2>{{day}}</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    <div style="float: left">
+        <p><input type="radio" name="time" value="1" checked="checked">朝</p>
+        <p><input type="radio" name="time" value="2">昼</p>
+        <p><input type="radio" name="time" value="3">夜</p>
+        <p><input type="radio" name="time" value="4">間食</p>
+    </div>
+    <div style="float: left">
+        {% for name in list %}
+        <p><input type="radio" name="name" value="{{name}}" checked="checked">{{name}}</p>
+        {% endfor %}
+    </div>
+    <div style="float: left; margin-right: 10em">
+        <input type="submit" value="投稿する">
+    </div>
+</form>
+
+</body>
+</html>

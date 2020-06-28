@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>作成</title>
+</head>
+<body>
+<h1>レシピ登録画面</h1>
+{% if user.is_authenticated %}
+投稿者：{{user.username}}
+<form action="" method="post">
+    {% csrf_token %}
+    <p>{{form.user.as_hidden}}</p>
+    <p>{{form.pub}}サイト上に公開する</p>
+    <p style="font-size: 1.3em; font-weight: bold">{{message}}{{form.name}}(最大50文字まで)</p>
+    <p>{{form.ingredient.as_hidden}}</p>
+    <p>{{form.weight.as_hidden}}</p>
+    <p>{{form.hyojiweight.as_hidden}}</p>
+    <p>{{form.hyojiryo.as_hidden}}</p>
+
+    <div style="float: left">
+        {% for i in checkedfood.0 %}
+        <p>{{ i }}</p>
+        {% endfor %}
+    </div>
+    <div style="float: left; font-weight: bold; text-align: right; margin-left: 1em">
+        <p></p>
+        {% for i in checkweight.0 %}
+        <p>{{ i }}</p>
+        {% endfor %}
+    </div>
+    <div style="float: left; text-align: right">
+        <p></p>
+        {% for i in chekryo.0 %}
+        <p>{{ i }}</p>
+        {% endfor %}
+    </div>
+    <div style="float: left; text-align: right">
+        {% for i in foodweight.0 %}
+        <p>({{ i }}g)</p>
+        {% endfor %}
+    </div>
+
+    <div style="float: left; margin-left: 2em">
+        <p>＜作り方＞</p><p>{{form.recipe}}</p>
+        <input type="submit" value="投稿する">
+    </div>
+    {% else %}
+    <p>あなたはログインしていません</p>
+    {% endif %}
+
+</form>
+</body>
+</html>
